@@ -3,7 +3,7 @@
 <div align="center">
 	<br>
 	<a href="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg">
-		<img src="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg" width="800" height="400" alt="Click to see the source">
+		<img src="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg" width="400" height="200" alt="Click to see the source">
 	</a>
 	<br>
 </div>
@@ -33,7 +33,7 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 
 我们的目标是通过这一游戏，让参与者深入领略到提示工程（prompt engineering）和自然语言处理的令人着迷之处。这个过程将向玩家们展示，如何巧妙地构建提示（prompts），以及如何运用它们来引发人工智能系统的惊人反应，同时也帮助他们更好地理解自然语言处理技术的不可思议之处。
 
-## :raising_hand: 如何提交自己的创业
+## :raising_hand: 如何提交设计好的关卡
 如果有好玩的问题或想法，欢迎玩家提交自己的创意，可以通过
 [发起 Pull Request](https://github.com/opendilab/LLMRiddles/compare) 向我们提交， 我们会在审核通过后收录至关卡中。
 
