@@ -11,7 +11,7 @@ _QUESTIONS = list_ordered_questions()
 _LANG = os.environ.get('QUESTION_LANG', 'cn')
 assert _LANG in ['cn', 'en'], _LANG
 _LLM = os.environ.get('QUESTION_LLM', 'chatgpt')
-assert _LLM in ['chatgpt', 'llama2-7b'], _LLM
+assert _LLM in ['chatgpt', 'mistral-7b'], _LLM
 _LLM_KEY = os.environ.get('QUESTION_LLM_KEY', None)
 
 if _LANG == "cn":
