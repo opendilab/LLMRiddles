@@ -42,7 +42,7 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 - 通过邮件与我们联系 (opendilab@pjlab.org.cn)
 
 - 在OpenDILab的群组中加入讨论(通过 WeChat: ding314assist 添加小助手微信)
-<img src=https://github.com/opendilab/CodeMorpheus/blob/release/llmriddles/assets/wechat.jpeg width=35% />
+<img src=https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/wechat.jpeg width=35% />
 
 
 
