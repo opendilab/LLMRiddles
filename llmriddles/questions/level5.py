@@ -25,13 +25,13 @@ def count_words(text: str, contain_punctuation: bool = False):
         return len(chinese_words)+len(english_words)
 
 CN_TEXT_1 = """
-第四章第一题（口是心非）请构造一个不少于十个字的问题，使得回答中不包含问题中的任意字符。
+第五章第一题（口是心非）请构造一个不少于十个字的问题，使得回答中不包含问题中的任意字符。
 
 请在下面的输入框内填写你的提问并点击按钮提交。
 """
 
 EN_TEXT_1 = """
-For the first question in chapter 3, Please construct a question of no less than ten words so that the answer does not contain any of the characters in the question.
+For the first question in chapter 5, Please construct a question of no less than ten words so that the answer does not contain any of the characters in the question.
 
 Please enter your query below and click the submit button
 """
@@ -52,5 +52,5 @@ def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str):
 register_question({
     'cn': CN_TEXT_1,
     'en': EN_TEXT_1,
-}, _checker_1, level=4)
+}, _checker_1, level=5)
 
