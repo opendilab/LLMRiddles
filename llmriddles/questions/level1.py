@@ -37,7 +37,7 @@ def count_words(text: str, contain_punctuation: bool = False):
 CN_TEXT_1 = """
 第一章第一题（初来乍到），请你构造一个问题使模型的回答是一字不差的“1+1=3”（不需要引号）。
 
-请在下面的输入框内填写你构造并点击按钮提交。
+请在下面的输入框内填写你的构造并点击按钮提交。
 """
 
 EN_TEXT_1 = """
