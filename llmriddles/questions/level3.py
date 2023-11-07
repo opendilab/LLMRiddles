@@ -48,11 +48,11 @@ def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str):
         return True, None
     else:
         return False, None
-    
+
 register_question({
     'cn': CN_TEXT_1,
     'en': EN_TEXT_1,
-}, _checker_1)
+}, _checker_1, level=3)
 
 CN_TEXT_2 = """
 第三章第二题（话自说自），请你输入一个至少10个字的提问，使模型的回答是问题的反序。
@@ -80,7 +80,7 @@ def _checker_2(question_text: str, user_text: str, answer_text: str, lang: str):
         words = user_text.split()
         words.reverse()
         user_text = ' '.join(words)
-    
+
     if user_text == answer_text:
         return True, None
     else:
@@ -89,7 +89,7 @@ def _checker_2(question_text: str, user_text: str, answer_text: str, lang: str):
 register_question({
     'cn': CN_TEXT_2,
     'en': EN_TEXT_2,
-}, _checker_2)
+}, _checker_2, level=3)
 
 CN_TEXT_3 = """
 第三章第三题（就是敢说），请你输入一个不包含“1”和“3”的提问，使模型的回答是一字不差的“1+1=3”（不需要引号）。
@@ -115,11 +115,11 @@ def _checker_3(question_text: str, user_text: str, answer_text: str, lang: str):
         return True, None
     else:
         return False, None
-    
+
 register_question({
     'cn': CN_TEXT_3,
     'en': EN_TEXT_3,
-}, _checker_3)
+}, _checker_3, level=3)
 
 # CN_TEXT_4 = """
 # 第三章第四题（回文协变），请你输入一个本身不是回文串的问题，使得正着问和倒着问时，模型的回答本身不是回文且也是逆序。
@@ -135,8 +135,8 @@ register_question({
 
 # def _checker_4(question_text: str, user_text: str, answer_text: str, lang: str):
 #     pass
-    
+
 # register_question({
 #     'cn': CN_TEXT_4,
 #     'en': EN_TEXT_4,
-# }, _checker_4)
+# }, _checker_4, level=3)
