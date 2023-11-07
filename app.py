@@ -35,7 +35,7 @@ if __name__ == '__main__':
             with gr.Column():
                 gr_api_key = gr.Text(placeholder='Your API Key', label='API Key', type='password',
                                      visible=_need_api_key())
-                gr_uuid = gr.Text(value='')
+                gr_uuid = gr.Text(value='', visible=False)
                 gr_predict = gr.Label(label='Correctness')
                 gr_explanation = gr.TextArea(label='Explanation')
                 gr_next = gr.Button('Next')
@@ -51,10 +51,11 @@ if __name__ == '__main__':
             print(_QUESTION_IDS)
 
             if _qid >= len(_QUESTIONS):
+                del _QUESTION_IDS[uuid_]
                 return 'Congratulations!', '', '', {}, '', \
                     gr.Button('Submit', interactive=False), \
-                    gr.Button('Next', interactive=False), \
-                    uuid_
+                    gr.Button('Try Again', interactive=True), \
+                    ''
             else:
                 executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
                 return executor.question_text, '', '', {}, '', \
