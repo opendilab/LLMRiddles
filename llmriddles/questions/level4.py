@@ -65,13 +65,13 @@ def get_all_numbers_in_a_sentence(text: str):
 
 
 CN_TEXT_3 = """
-第四章第三题（自然之密），请输入一个大于一的正整数作为问题，使回答里包含和它刚好相差1的数。
+第四章第一题（自然之密），请输入一个大于一的正整数作为问题，使回答里包含和它刚好相差1的数。
 
 请在下面的输入框内填写你构造并点击按钮提交。
 """
 
 EN_TEXT_3 = """
-For the third question in chapter 4, please enter a positive integer greater than one as the question so that the answer contains a number that is exactly 1 different from it.
+For the first question in chapter 4, please enter a positive integer greater than one as the question so that the answer contains a number that is exactly 1 different from it.
 
 Please enter your query below and click the submit button
 """

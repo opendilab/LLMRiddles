@@ -6,10 +6,10 @@ import sympy
 from .question import register_question
 
 CN_TEXT_1 = """
-你需要提出一个字数是质数的问题，使回答的长度刚好是它的下一个质数。
+第二章第一题（质数长度），你需要提出一个字数是质数的问题，使回答的长度刚好是它的下一个质数。
 """
 EN_TEXT_1 = """
-You need to come up with a question that has a prime number of words, so the answer's length is exactly the next prime number.
+For the first question in chapter 2, You need to come up with a question that has a prime number of words, so the answer's length is exactly the next prime number.
 """
 
 
@@ -63,10 +63,10 @@ register_question({
 })
 
 CN_TEXT_2 = """
-请输入一个大于一的正整数作为问题，使回答里包含至少比它大一千的数。
+第二章第二题（越说越大），请输入一个大于一的正整数作为问题，使回答里包含至少比它大一千的数。
 """
 EN_TEXT_2 = """
-Please enter a positive integer greater than one as a question, so that the answer contains a number that is at least one thousand more than it.
+For the second question in chapter 2, Please enter a positive integer greater than one as a question, so that the answer contains a number that is at least one thousand more than it.
 """
 
 
@@ -111,10 +111,10 @@ register_question({
 })
 
 CN_TEXT_3 = """
-请输入一个大于一的正整数作为问题，使回答里包含至少10个不同的至少比它小一千的自然数。
+第二章第三题（越说越小），请输入一个大于一的正整数作为问题，使回答里包含至少10个不同的至少比它小一千的自然数。
 """
 EN_TEXT_3 = """
-Please enter a positive integer greater than one as a question, so that the answer contains at least 10 different natural numbers, each of them at least 1000 less than the question.
+For the third question in chapter 2, Please enter a positive integer greater than one as a question, so that the answer contains at least 10 different natural numbers, each of them at least 1000 less than the question.
 """
 
 
@@ -170,10 +170,10 @@ register_question({
 })
 
 CN_TEXT_4 = """
-请在不提及1,4,5这三个字符的情况下让模型回答114514，不要有多余的字符。
+第二章第四题（警世名言），请在不提及1,4,5这三个字符的情况下让模型回答114514，不要有多余的字符。
 """
 EN_TEXT_4 = """
-Please make the model answer "114514" without mentioning the characters 1, 4, and 5, and without any extra characters.
+For the fourth question in chapter 2, Please make the model answer "114514" without mentioning the characters 1, 4, and 5, and without any extra characters.
 """
 
 
@@ -200,10 +200,10 @@ register_question({
 })
 
 CN_TEXT_5 = """
-请输入一个大于一的平方数作为问题，使回答里包含它的平方根对应的数。
+第二章第五题（开平方数），请输入一个大于一的平方数作为问题，使回答里包含它的平方根对应的数。
 """
 EN_TEXT_5 = """
-Please provide a square number greater than one as the question, and the answer should include the number corresponding to its square root.
+For the fifth question in chapter 2, Please provide a square number greater than one as the question, and the answer should include the number corresponding to its square root.
 """
 
 
@@ -254,10 +254,10 @@ register_question({
 })
 
 CN_TEXT_6 = """
-请提一个不包含“狗”这个字的10个字以内的问题，使回答中“狗”这个字出现的次数至少是问题字数的2倍。
+第二章第六题（得寸进狗），请提一个不包含“狗”这个字的10个字以内的问题，使回答中“狗”这个字出现的次数至少是问题字数的2倍。
 """
 EN_TEXT_6 = """
-Please ask a question in under 10 words without the word "dog" and ensure that the word "dog" appears at least twice in the answer for each word in the question.
+For the sixth question in chapter 2, Please ask a question in under 10 words without the word "dog" and ensure that the word "dog" appears at least twice in the answer for each word in the question.
 """
 
 
