@@ -2,4 +2,4 @@ hbutils>=0.9.1
 tqdm
 requests>=2.20
 gradio==4.1.1
-openai
+openai<1
