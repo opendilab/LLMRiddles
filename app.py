@@ -122,7 +122,7 @@ if __name__ == '__main__':
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
                 with gr.Row():
-                    gr_submit = gr.Button(submit_label, interactive=True)
+                    gr_submit = gr.Button(submit_label, interactive=False)
                     gr_next = gr.Button(next_label)
 
             with gr.Column():
@@ -144,7 +144,7 @@ if __name__ == '__main__':
             if _qid >= len(_QUESTIONS):
                 del _QUESTION_IDS[uuid_]
                 return game_cleared_label, '', '', {}, '', \
-                    gr.Button(submit_label, interactive=True), \
+                    gr.Button(submit_label, interactive=False), \
                     gr.Button(try_again_label, interactive=True), \
                     ''
             else:
