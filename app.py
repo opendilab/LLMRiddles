@@ -198,4 +198,5 @@ if __name__ == '__main__':
         )
 
     concurrency = int(os.environ.get('CONCURRENCY', os.cpu_count()))
-    demo.queue().launch(max_threads=concurrency)
+    favicon_path = os.path.join(os.path.dirname(__file__), 'llmriddles', 'assets', 'avatar.png')
+    demo.queue().launch(max_threads=concurrency, favicon_path=favicon_path, share=True)

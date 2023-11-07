@@ -23,8 +23,8 @@ def register_question(text: Union[Mapping[str, str], str],
     if isinstance(checkers, collections.abc.Mapping):
         _origin_checkers = checkers
 
-        def _integrated_checker(question_text: str, answer_text: str, lang: str):
-            return _origin_checkers[lang](question_text, answer_text)
+        def _integrated_checker(question_text: str, user_text: str, answer_text: str, lang: str):
+            return _origin_checkers[lang](question_text, user_text, answer_text)
 
         checker: MultiLangCheckerTyping = _integrated_checker
     else:
