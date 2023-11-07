@@ -4,3 +4,5 @@ requests>=2.20
 gradio==4.1.1
 openai>=1
 sympy
+flask
+transformers

@@ -29,30 +29,33 @@ QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 
 ```shell
 QUESTION_LANG=en QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
-### LLaMA2-7b + 中文
+### Mistral-7B-Instruct-v0.1 + 英文
 ```shell
-QUESTION_LANG=cn QUESTION_LLM='llama2-7b' python3 -u app.py
-```
-### LLaMA2-7b + 英文
-```shell
-QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
+QUESTION_LANG=en QUESTION_LLM='mistral-7b' python3 -u app.py
 ```
 ## :technologist: 为什么制作这个游戏
 
 我们的目标是通过这一游戏，让参与者深入领略到提示工程（prompt engineering）和自然语言处理的令人着迷之处。这个过程将向玩家们展示，如何巧妙地构建提示词（prompts），以及如何运用它们来引发人工智能系统的惊人反应，同时也帮助他们更好地理解深度学习和自然语言处理技术的不可思议之处。
 
 ## :raising_hand: 如何提交设计好的关卡
-如果有好玩的问题或想法，欢迎玩家提交自己的创意，可以通过
+如果有好玩的问题或想法，欢迎玩家提交自己的创意，可以
 [发起 Pull Request](https://github.com/opendilab/LLMRiddles/compare) 向我们提交， 我们会在审核通过后收录至关卡中。
+问题的设计格式应包含以下几点：
+- Pull Request标题，示例：feature(username): 章节X-关卡设计
+- 希望被提及的ID
+- 对应章节问题文件的修改
+- init.py的修改
+
+完整示例请参考：[提交属于自己的关卡设计]()
 
 ## :writing_hand: 未来计划
 
 - [x] 支持自定义关卡
 - [ ] 在线试玩链接
 - [ ] Hugging Face Space 链接
-- [ ] 支持LLaMA2-7B（英文）
-- [ ] 支持Mistral-7B（英文）
+- [x] 支持Mistral-7B-Instruct-v0.1（英文）
 - [ ] 支持Baichuan2-7B（中文）
+- [ ] 支持LLaMA2-7B（英文）
 - [ ] LLM 推理速度优化
 
 
