@@ -17,11 +17,11 @@ class QuestionExecutor:
 
     def check(self, qs_text: str) -> Tuple[str, bool, str]:
         answer_text = get_llm_fn(self.llm)(qs_text, **self.llm_cfgs)
-        correct, explanation = self.check_answer(answer_text)
+        correct, explanation = self.check_answer(qs_text, answer_text)
         return answer_text, correct, explanation
 
-    def check_answer(self, answer_text: str) -> Tuple[bool, str]:
-        correct, explanation = self.question.checker(self.question_text, answer_text, self.lang)
+    def check_answer(self, user_text: str, answer_text: str) -> Tuple[bool, str]:
+        correct, explanation = self.question.checker(self.question_text, user_text, answer_text, self.lang)
         if explanation is None:
             if correct:
                 explanation = 'LLM的回答满足要求' if self.lang == 'cn' else 'Correct Answer From LLM'

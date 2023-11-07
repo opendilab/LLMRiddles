@@ -12,7 +12,15 @@ _LANG = os.environ.get('QUESTION_LANG', 'cn')
 _LLM = os.environ.get('QUESTION_LLM', 'chatgpt')
 
 if _LANG == "cn":
-    requirement_ph = "点击\"下一题\"开始游戏"
+    requirement_ph = """
+    欢迎来玩LLM Riddles!
+
+    你将通过本游戏对语言大模型产生更深刻的理解。
+
+    在本游戏中，你需要构造一个提给一个语言大模型的问题，使得它回复的答案符合要求。
+
+    点击\"下一题\"开始游戏
+    """
     requirement_label = "游戏须知"
     question_ph = "你对大语言模型的提问"
     question_label = "提问栏"
@@ -30,7 +38,15 @@ if _LANG == "cn":
     api_error_info = "请在提交问题之前先输入你的 API Key"
     try_again_label = "再玩一次"
 elif _LANG == "en":
-    requirement_ph = 'Click \'Next\' to Start'
+    requirement_ph = """
+    Welcome to LLM Riddles!
+
+    In this game, you'll gain a deeper understanding of language models.
+
+    Your challenge is to create a question to ask a language model in a way that the answer it provides meets specific criteria.
+
+    Click \'Next\' to Start
+    """
     requirement_label = "Requirements"
     question_ph = "Your Question for LLM"
     question_label = "Question"
@@ -69,7 +85,7 @@ if __name__ == '__main__':
                 gr_requirement = gr.TextArea(placeholder=requirement_ph, label=requirement_label)
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_answer = gr.TextArea(placeholder=answer_ph, label=answer_label)
-                gr_submit = gr.Button(submit_label, interactive=False)
+                gr_submit = gr.Button(submit_label, interactive=True)
 
             with gr.Column():
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password',
@@ -91,7 +107,7 @@ if __name__ == '__main__':
             if _qid >= len(_QUESTIONS):
                 del _QUESTION_IDS[uuid_]
                 return game_cleared_label, '', '', {}, '', \
-                    gr.Button(submit_label, interactive=False), \
+                    gr.Button(submit_label, interactive=True), \
                     gr.Button(try_again_label, interactive=True), \
                     ''
             else:
