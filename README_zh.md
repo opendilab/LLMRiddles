@@ -12,7 +12,13 @@
 欢迎来到 LLM Riddles！这是一个与语言模型斗智斗勇的游戏。在游戏中，你需要构造与语言模型交互的问题，来得到符合要求的答案。在这个过程中，你可以开动脑筋，用你想到的所有方式，让模型输出答案要求的结果。
 
 ## :space_invader: 如何试玩
-我们提供了在线版本以供玩家直接访问试玩，本地部署可以通过以下方式：
+我们提供了在线版本以供玩家直接访问试玩:
+- [ChatGPT + 英文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
+- [ChatGPT + 中文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
+- [Mistral + 英文(已预设api key)](https://4521e4d138d3779498.gradio.live)
+- [ChatGPT + 中文(已预设api key)](http://llmriddles.opendilab.net/)
+
+本地部署可以通过以下方式：
 ### ChatGPT + 中文
 ```shell
 QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
@@ -42,16 +48,16 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 - 对应章节问题文件的修改
 - init.py的修改
 
-完整示例请参考：[提交属于自己的关卡设计]()
+完整示例请参考：[提交属于自己的关卡设计](https://github.com/opendilab/LLMRiddles/pull/6)
 
 ## :writing_hand: 未来计划
 
 - [x] 支持自定义关卡
-- [ ] 在线试玩链接
-- [ ] Hugging Face Space 链接
-- [ ] 支持LLaMA2-7B（英文）
-- [ ] 支持Mistral-7B（英文）
+- [x] 在线试玩链接
+- [x] Hugging Face Space 链接
+- [x] 支持Mistral-7B（英文）
 - [ ] 支持Baichuan2-7B（中文）
+- [ ] 支持LLaMA2-7B（英文）
 - [ ] LLM 推理速度优化
 
 ## :speech_balloon: 反馈问题 & 提出建议
