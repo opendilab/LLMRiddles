@@ -29,13 +29,9 @@ QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 
 ```shell
 QUESTION_LANG=en QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
-### LLaMA2-7b + 中文
+### Mistral-7B-Instruct-v0.1 + 英文
 ```shell
-QUESTION_LANG=cn QUESTION_LLM='llama2-7b' python3 -u app.py
-```
-### LLaMA2-7b + 英文
-```shell
-QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
+QUESTION_LANG=en QUESTION_LLM='mistral-7b' python3 -u app.py
 ```
 ## :technologist: 为什么制作这个游戏
 
@@ -57,9 +53,9 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 - [x] 支持自定义关卡
 - [ ] 在线试玩链接
 - [ ] Hugging Face Space 链接
-- [ ] 支持LLaMA2-7B（英文）
-- [ ] 支持Mistral-7B（英文）
+- [x] 支持Mistral-7B-Instruct-v0.1（英文）
 - [ ] 支持Baichuan2-7B（中文）
+- [ ] 支持LLaMA2-7B（英文）
 - [ ] LLM 推理速度优化
 
 

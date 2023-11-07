@@ -1,5 +1,6 @@
 import os
 import uuid
+import logging
 
 import gradio as gr
 
@@ -7,14 +8,20 @@ from llmriddles.questions import QuestionExecutor
 from llmriddles.questions import list_ordered_questions
 
 _QUESTION_IDS = {}
+count = 0
 _QUESTIONS = list_ordered_questions()
 _LANG = os.environ.get('QUESTION_LANG', 'cn')
 assert _LANG in ['cn', 'en'], _LANG
 _LLM = os.environ.get('QUESTION_LLM', 'chatgpt')
-assert _LLM in ['chatgpt', 'llama2-7b'], _LLM
+assert _LLM in ['chatgpt', 'mistral-7b'], _LLM
 _LLM_KEY = os.environ.get('QUESTION_LLM_KEY', None)
+_DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
 
 if _LANG == "cn":
+    if _DEBUG:
+        logging.getLogger().setLevel(logging.INFO)
+    else:
+        logging.getLogger().setLevel(logging.WARNING)
     title = "完蛋！我被 LLM 拿捏了"
     requirement_ph = """
     欢迎来到 LLM Riddles!
@@ -122,7 +129,7 @@ if __name__ == '__main__':
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
                 with gr.Row():
-                    gr_submit = gr.Button(submit_label, interactive=True)
+                    gr_submit = gr.Button(submit_label, interactive=False)
                     gr_next = gr.Button(next_label)
 
             with gr.Column():
@@ -134,8 +141,11 @@ if __name__ == '__main__':
 
 
         def _next_question(uuid_):
+            global count
             if not uuid_:
                 uuid_ = str(uuid.uuid4())
+                count += 1
+                logging.info(f'Player {count} starts the game now')
             global _QUESTION_IDS
             _qid = _QUESTION_IDS.get(uuid_, -1)
             _qid += 1
@@ -143,8 +153,9 @@ if __name__ == '__main__':
 
             if _qid >= len(_QUESTIONS):
                 del _QUESTION_IDS[uuid_]
+                logging.info(f'Player {count} has passed the game now')
                 return game_cleared_label, '', '', {}, '', \
-                    gr.Button(submit_label, interactive=True), \
+                    gr.Button(submit_label, interactive=False), \
                     gr.Button(try_again_label, interactive=True), \
                     ''
             else:
