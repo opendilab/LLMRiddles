@@ -12,7 +12,13 @@
 Welcome to LLM Riddles! This is a game of wits and courage with language models. In the game, you need to construct questions that interact with the language model to get answers that meet the requirements. In this process, you can use your brain and use all the methods you can think of to get the model to output the results required by the answer.
 
 ## :space_invader: How to Play
-We provide an online version for players to directly access and try out. Local deployment can be done in the following ways:
+We provide an online version for players to directly access and try out. 
+- [ChatGPT + English(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
+- [ChatGPT + Chinese(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
+- [Mistral + English(w/ key)](https://4521e4d138d3779498.gradio.live)
+- [ChatGPT + Chinese(w/ key)](http://llmriddles.opendilab.net/)
+
+Local deployment can be done in the following ways:
 ### ChatGPT + Chinese
 ```shell
 QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
@@ -37,13 +43,13 @@ The question format should include the following points:
 - Modify the corresponding chapter question files
 - Modification of init.py
 
-For a complete example, please refer to: [Submit your own level design]()
+For a complete example, please refer to: [Submit your own level design](https://github.com/opendilab/LLMRiddles/pull/6)
 
 ## :writing_hand: Roadmap
 
 - [x] Support custom levels
-- [ ] Online trial link
-- [ ] Hugging Face Space link
+- [x] Online trial link
+- [x] Hugging Face Space link
 - [x] Support Mistral-7B（English version）
 - [ ] Support Baichuan2-7B（Chinese version）
 - [ ] Support LLaMA2-7B（English version）
