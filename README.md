@@ -2,8 +2,8 @@
 
 <div align="center">
 	<br>
-	<a href="https://github.com/opendilab/LLMRiddles/blob/main/asserts/banner.svg">
-		<img src="https://github.com/opendilab/LLMRiddles/blob/main/asserts/banner.svg" width="800" height="400" alt="Click to see the source">
+	<a href="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/asserts/banner.svg">
+		<img src="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/asserts/banner.svg" width="800" height="400" alt="Click to see the source">
 	</a>
 	<br>
 </div>
