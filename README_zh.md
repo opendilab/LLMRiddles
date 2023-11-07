@@ -60,12 +60,12 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 - 在OpenDILab的群组中加入讨论(通过 WeChat: ding314assist 添加小助手微信)
 <img src=https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/wechat.jpeg width=35% />
 
-## Special Thanks
+## :star2: Special Thanks
 - 感谢 [Haoqiang Fan](https://www.zhihu.com/people/haoqiang-fan) 的原始创意和题目，为本项目的开发和扩展提供了灵感与动力。
 - 感谢 [HuggingFace](https://huggingface.co) 对游戏的支持与协助。
 - 感谢 [LLM Riddles contributors](https://github.com/opendilab/LLMRiddles/graphs/contributors) 的实现与支持。
 
-## License
+## :label: License
 All code within this repository is under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 <p align="right">(<a href="#top">back to top</a>)</p>

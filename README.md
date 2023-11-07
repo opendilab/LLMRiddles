@@ -55,12 +55,12 @@ For a complete example, please refer to: [Submit your own level design]()
 - Discuss on OpenDILab's WeChat group (i.e. add us on WeChat: ding314assist)
 <img src=https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/wechat.jpeg width=35% />
 
-## Special Thanks
+## :star2: Special Thanks
 - Thanks to [Haoqiang Fan](https://www.zhihu.com/people/haoqiang-fan) for his original idea and title, which provided inspiration and motivation for the development and expansion of this project.
 - Thanks to [HuggingFace](https://huggingface.co) for supporting and assisting the game.
 - Thanks to [LLM Riddles contributors](https://github.com/opendilab/LLMRiddles/graphs/contributors) for their implementation and support.
 
-## License
+## :label: License
 All code within this repository is under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
