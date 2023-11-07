@@ -1,5 +1,5 @@
 <!-- Credit : https://github.com/sindresorhus/css-in-readme-like-wat -->
-<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" viewBox="0 0 1000 200" width="800" height="200" xmlns="http://www.w3.org/2000/svg">
 	<foreignObject width="100%" height="100%">
 		<div xmlns="http://www.w3.org/1999/xhtml">
 			<style>
@@ -53,9 +53,9 @@
 					justify-content: center;
 					margin: 0;
 					width: 100%;
-					height: 400px;
+					height: 200px;
 					background: linear-gradient(-45deg, #fc5c7d, #6a82fb, #05dfd7);
-					background-size: 600% 400%;
+					background-size: 1000% 200%;
 					animation: gradientBackground 10s ease infinite;
 					border-radius: 10px;
 					color: white;
@@ -64,7 +64,7 @@
 
 				h1 {
 					font-size: 50px;
-					line-height: 1.3;
+					line-height: 1.5;
 					letter-spacing: 5px;
 					text-transform: uppercase;
 					text-shadow:

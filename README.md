@@ -1,5 +1,13 @@
 # LLM Riddles
 
+<!-- <div align="center">
+	<br>
+	<a href="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg">
+		<img src="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg" width="1000" height="200" alt="Click to see the source">
+	</a>
+	<br>
+</div> -->
+
 <div align="center">
 	<br>
 	<a href="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg">
