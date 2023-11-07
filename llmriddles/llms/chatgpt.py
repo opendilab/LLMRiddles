@@ -14,7 +14,6 @@ def _setup_openai():
         openai.api_key = os.environ['OPENAI_KEY']
     else:
         openai.api_key_path = f'{parent_dir}/.key'
-    return openai.api_key_path
 
 
 def ask_chatgpt(message: str):
