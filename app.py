@@ -9,7 +9,10 @@ from llmriddles.questions import list_ordered_questions
 _QUESTION_IDS = {}
 _QUESTIONS = list_ordered_questions()
 _LANG = os.environ.get('QUESTION_LANG', 'cn')
+assert _LANG in ['cn', 'en'], _LANG
 _LLM = os.environ.get('QUESTION_LLM', 'chatgpt')
+assert _LLM in ['chatgpt', 'llama2-7b'], _LLM
+_LLM_KEY = os.environ.get('QUESTION_LLM_KEY', None)
 
 if _LANG == "cn":
     title = "完蛋！我被 LLM 拿捏了"
@@ -98,7 +101,7 @@ else:
 
 
 def _need_api_key():
-    return _LLM == 'chatgpt'
+    return _LLM == 'chatgpt' and _LLM_KEY is None
 
 
 def _get_api_key_cfgs(api_key):
@@ -117,8 +120,7 @@ if __name__ == '__main__':
         with gr.Row():
             with gr.Column():
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
-                gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password',
-                                     visible=_need_api_key())
+                gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
                 with gr.Row():
                     gr_submit = gr.Button(submit_label, interactive=True)
                     gr_next = gr.Button(next_label)
@@ -170,7 +172,7 @@ if __name__ == '__main__':
             _qid = _QUESTION_IDS[uuid_]
             executor = QuestionExecutor(
                 _QUESTIONS[_qid], _LANG,
-                llm=_LLM, llm_cfgs=_get_api_key_cfgs(api_key) if _need_api_key() else {}
+                llm=_LLM, llm_cfgs=_get_api_key_cfgs(api_key) if _need_api_key() else {'api_key': _LLM_KEY}
             )
             answer_text, correctness, explanation = executor.check(qs_text)
             labels = {correct_label: 1.0} if correctness else {wrong_label: 1.0}
