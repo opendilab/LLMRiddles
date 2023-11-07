@@ -28,6 +28,7 @@ if _LANG == "cn":
     correct_label = "正确"
     wrong_label = "错误"
     api_error_info = "请在提交问题之前先输入你的 API Key"
+    try_again_label = "再玩一次"
 elif _LANG == "en":
     requirement_ph = 'Click \'Next\' to Start'
     requirement_label = "Requirements"
@@ -45,6 +46,7 @@ elif _LANG == "en":
     correct_label = "Correct"
     wrong_label = "Wrong"
     api_error_info = "Please Enter API Key Before Submitting Question."
+    try_again_label = "Try Again"
 else:
     raise KeyError("invalid _LANG: {}".format(_LANG))
 
@@ -72,7 +74,7 @@ if __name__ == '__main__':
             with gr.Column():
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password',
                                      visible=_need_api_key())
-                gr_uuid = gr.Text(value='')
+                gr_uuid = gr.Text(value='', visible=False)
                 gr_predict = gr.Label(label=predict_label)
                 gr_explanation = gr.TextArea(label=explanation_label)
                 gr_next = gr.Button(next_label)
@@ -87,9 +89,11 @@ if __name__ == '__main__':
             _QUESTION_IDS[uuid_] = _qid
 
             if _qid >= len(_QUESTIONS):
+                del _QUESTION_IDS[uuid_]
                 return game_cleared_label, '', '', {}, '', \
                     gr.Button(submit_label, interactive=False), \
-                    gr.Button(next_label, interactive=False), uuid_
+                    gr.Button(try_again_label, interactive=True), \
+                    ''
             else:
                 executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
                 return executor.question_text, '', '', {}, '', \
