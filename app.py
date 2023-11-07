@@ -17,23 +17,23 @@ _LLM_KEY = os.environ.get('QUESTION_LLM_KEY', None)
 if _LANG == "cn":
     title = "完蛋！我被 LLM 拿捏了"
     requirement_ph = """
-    欢迎来玩LLM Riddles!
+    欢迎来到 LLM Riddles!
 
-    你将通过本游戏对语言大模型产生更深刻的理解。在本游戏中，你需要构造一个提给一个语言大模型的问题，使得它回复的答案符合要求。
+    你将通过本游戏对大语言模型产生更深刻的理解。在本游戏中，你需要构造一个提给语言大模型的问题，使得它回复的答案符合题目要求。
 
-    点击\"下一题\"开始游戏
+    点击\"下一题\"即可开始游戏
     """
     requirement_label = "游戏须知/说明"
     question_ph = "你对大语言模型的提问"
-    question_label = "提问栏"
+    question_label = "玩家提问栏"
     answer_ph = "大语言模型的回答"
-    answer_label = "回答栏"
+    answer_label = "大语言模型回答栏"
     submit_label = "提交"
     next_label = "下一题"
     api_ph = "你个人的大语言模型 API Key (例如：ChatGPT)"
     api_label = "API key"
     predict_label = "结果正确性"
-    explanation_label = "结果解释"
+    explanation_label = "结果详细解释"
     game_cleared_label = "祝贺！你已成功通关！"
     correct_label = "正确"
     wrong_label = "错误"
@@ -43,20 +43,20 @@ if _LANG == "cn":
     <div align="center">
         <img src="https://raw.githubusercontent.com/opendilab/LLMRiddles/main/llmriddles/assets/banner.svg" width="80%" height="20%" alt="Banner Image">
     </div>
-    <h2 style="text-align: center; color: black;"><a href="https://github.com/OpenDILab"> 🎭LLM Riddles: 完蛋！我被 LLM 拿捏了</a></h2>
+    <h2 style="text-align: center; color: black;"><a href="https://github.com/OpenDILab"> 🎭LLM Riddles：完蛋！我被 LLM 拿捏了</a></h2>
     <h4 align="center"> 如果你喜欢这个项目，请给我们在 GitHub 点个 star ✨ 。我们将会持续保持更新。再次感谢游戏<a href="https://www.zhihu.com/people/haoqiang-fan"> 原作者 </a>的奇思妙想！  </h4>
     <strong><h5 align="center">注意：算法模型的输出可能包含一定的随机性。相关结果不代表任何开发者和相关 AI 服务的态度和意见。本项目开发者不对生成结果作任何保证，仅供娱乐。<h5></strong>
     """
     tos_markdown = """
     ### 使用条款
-    用户使用本服务须同意以下条款：
-    该服务是一项探索性研究预览版，仅供非商业用途。它仅提供有限的安全措施，并可能生成令人反感的内容。不得将其用于任何非法、有害、暴力、种族主义等目的。该服务可能会收集用户对话数据以供未来研究之用。
-    如果您的回答有不当之处，请发送邮件至‘opendilab@pjlab.org.cn’！ 我们将删除这些相关信息，并不断改进这个项目。
-    为了获得最佳体验，请使用台式电脑进行此演示，因为移动设备可能会影响可视化质量。
+    玩家使用本服务须同意以下条款：
+    该服务是一项探索性研究预览版，仅供非商业用途。它仅提供有限的安全措施，并可能生成令人反感的内容。不得将其用于任何非法、有害、暴力、种族主义等目的。该服务可能会收集玩家对话数据以供未来研究之用。
+    如果您的游玩体验有不佳之处，请发送邮件至 opendilab@pjlab.org.cn ！ 我们将删除相关信息，并不断改进这个项目。
+    为了获得最佳体验，请使用台式电脑进行此预览版游戏，因为移动设备可能会影响可视化效果。
     **版权所有 2023 OpenDILab。**
     """
 elif _LANG == "en":
-    title = "LLM Riddles"
+    title = "LLM Riddles: Oops! Rolling in LLM."
     requirement_ph = """
     Welcome to LLM Riddles!
 
@@ -90,9 +90,9 @@ elif _LANG == "en":
     """
     tos_markdown = """
     ### Terms of use
-    By using this service, users are required to agree to the following terms:
+    By using this service, players are required to agree to the following terms:
     The service is a research preview intended for non-commercial use only. It only provides limited safety measures and may generate offensive content. It must not be used for any illegal, harmful, violent, racist, or sexual purposes. The service may collect user dialogue data for future research.
-    Please send email to 'opendilab@pjlab.org.cn' if you get any inappropriate answer! We will delete those and keep improving our moderator.
+    Please send email to opendilab@pjlab.org.cn if you get any inappropriate answer! We will delete those and keep improving our moderator.
     For an optimal experience, please use desktop computers for this demo, as mobile devices may compromise its quality.
     **Copyright 2023 OpenDILab.**
     """
@@ -154,7 +154,6 @@ if __name__ == '__main__':
                     gr.Button(next_label, interactive=False), \
                     uuid_
 
-
         gr_next.click(
             fn=_next_question,
             inputs=[gr_uuid],
@@ -181,11 +180,11 @@ if __name__ == '__main__':
             else:
                 return answer_text, labels, explanation, gr.Button(next_label, interactive=False), uuid_
 
-
         gr_submit.click(
             _submit_answer,
             inputs=[gr_question, gr_api_key, gr_uuid],
             outputs=[gr_answer, gr_predict, gr_explanation, gr_next, gr_uuid],
         )
 
-    demo.launch()
+    concurrency = int(os.environ.get('CONCURRENCY', os.cpu_count()))
+    demo.queue().launch(max_threads=concurrency)
