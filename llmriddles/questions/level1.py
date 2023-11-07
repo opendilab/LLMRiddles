@@ -145,7 +145,7 @@ def _checker_4(question_text: str, user_text: str, answer_text: str, lang: str):
     if count_words(user_text) > 1:
         return False, "用户的问题长度应该在一个字及以内" if lang == 'cn' else 'Question should be one word.'
     elif count_words(answer_text) >= 20:
-        return False, "大语言模型的答案应该小于100个字" if lang == 'cn' else 'Answer should be less than 20 words.'
+        return False, "大语言模型的答案应该小于20个字" if lang == 'cn' else 'Answer should be less than 20 words.'
     else:
         return True, None
 
