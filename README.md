@@ -3,15 +3,15 @@
 <div align="center">
 	<br>
 	<a href="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg">
-		<img src="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg" width="400" height="200" alt="Click to see the source">
+		<img src="https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/banner.svg" width="1000" height="200" alt="Click to see the source">
 	</a>
 	<br>
 </div>
 
-## :thinking: What's This
+## :thinking: 什么是LLMRiddles
 欢迎来到 LLM Riddles！这是一个与语言模型斗智斗勇的游戏。在游戏中，你需要构造与语言模型交互的问题，来得到符合要求的答案。在这个过程中，你可以开动脑筋，用你想到的所有方式，让模型输出答案要求的结果。
 
-## :space_invader: How to Play
+## :space_invader: 如何试玩
 我们提供了在线版本以供玩家直接访问试玩，本地部署可以通过以下方式：
 ### ChatGPT + 中文
 ```shell
@@ -37,6 +37,17 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 如果有好玩的问题或想法，欢迎玩家提交自己的创意，可以通过
 [发起 Pull Request](https://github.com/opendilab/LLMRiddles/compare) 向我们提交， 我们会在审核通过后收录至关卡中。
 
+## :writing_hand: 未来计划
+
+- [x] A
+- [x] B
+- [ ] C
+- [ ] D
+- [ ] E
+- [ ] F
+- [ ] G
+
+
 ## :speech_balloon: 反馈问题 & 提出建议
 - [发起 Issue](https://github.com/opendilab/CodeMorpheus/issues/new/choose) 在 Github
 - 通过邮件与我们联系 (opendilab@pjlab.org.cn)
@@ -44,9 +55,12 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 - 在OpenDILab的群组中加入讨论(通过 WeChat: ding314assist 添加小助手微信)
 <img src=https://github.com/opendilab/LLMRiddles/blob/main/llmriddles/assets/wechat.jpeg width=35% />
 
-
-
 ## Special Thanks
-- 感谢[HuggingFace](https://huggingface.co)对游戏的支持与协助
-- 感谢[Haoqiang Fan](https://www.zhihu.com/people/haoqiang-fan)的创意与想法
-- 感谢[LLM Riddles contributors](https://github.com/opendilab/LLMRiddles/graphs/contributors)的实现与支持
+- 感谢[HuggingFace](https://huggingface.co)对游戏的支持与协助。
+- 感谢[Haoqiang Fan](https://www.zhihu.com/people/haoqiang-fan)的创意与想法及其实现，为本项目提供了灵感与动力。
+- 感谢[LLM Riddles contributors](https://github.com/opendilab/LLMRiddles/graphs/contributors)的实现与支持。
+
+## License
+All code within this repository is under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
