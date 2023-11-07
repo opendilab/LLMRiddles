@@ -5,17 +5,18 @@ from ..llms import get_llm_fn
 
 
 class QuestionExecutor:
-    def __init__(self, question: Question, lang: str = 'cn', llm: str = 'chatgpt'):
+    def __init__(self, question: Question, lang: str = 'cn', llm: str = 'chatgpt', llm_cfgs=None):
         self.question = question
         self.lang = lang
         self.llm = llm
+        self.llm_cfgs = dict(llm_cfgs or {})
 
     @property
     def question_text(self):
         return self.question.texts[self.lang]
 
     def check(self, qs_text: str) -> Tuple[str, bool, str]:
-        answer_text = get_llm_fn(self.llm)(qs_text)
+        answer_text = get_llm_fn(self.llm)(qs_text, **self.llm_cfgs)
         correct, explanation = self.check_answer(answer_text)
         return answer_text, correct, explanation
 
