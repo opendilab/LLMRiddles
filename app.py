@@ -6,7 +6,6 @@ import gradio as gr
 from llmriddles.questions import QuestionExecutor
 from llmriddles.questions import list_ordered_questions
 
-_QUESTION_ID = -1
 _QUESTION_IDS = {}
 _QUESTIONS = list_ordered_questions()
 _LANG = os.environ.get('QUESTION_LANG', 'cn')
@@ -51,13 +50,13 @@ if __name__ == '__main__':
             _QUESTION_IDS[uuid_] = _qid
             print(_QUESTION_IDS)
 
-            if _QUESTION_ID >= len(_QUESTIONS):
+            if _qid >= len(_QUESTIONS):
                 return 'Congratulations!', '', '', {}, '', \
                     gr.Button('Submit', interactive=False), \
                     gr.Button('Next', interactive=False), \
                     uuid_
             else:
-                executor = QuestionExecutor(_QUESTIONS[_QUESTION_ID], _LANG)
+                executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
                 return executor.question_text, '', '', {}, '', \
                     gr.Button('Submit', interactive=True), \
                     gr.Button('Next', interactive=False), \
