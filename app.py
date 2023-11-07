@@ -76,7 +76,7 @@ if __name__ == '__main__':
         def _submit_answer(qs_text: str, api_key: str, uuid_: str):
             if _need_api_key() and not api_key:
                 return '---', {}, 'Please Enter API Key Before Submitting Question.', \
-                    gr.Button('Next', interactive=False)
+                    gr.Button('Next', interactive=False), uuid_
 
             print(_QUESTION_IDS)
             _qid = _QUESTION_IDS[uuid_]
