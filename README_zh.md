@@ -17,7 +17,7 @@
 我们提供了在线版本以供玩家直接访问试玩:
 - [ChatGPT + 英文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
 - [ChatGPT + 中文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
-- [Mistral + 英文(已预设api key)](https://5e6f7422e348fc7dec.gradio.live)
+- [Mistral + 英文(已预设api key)](https://d9b451a97791dd8ef3.gradio.live)
 - [ChatGPT + 中文(已预设api key)](http://llmriddles.opendilab.net/)
 
 本地部署可以通过以下方式：

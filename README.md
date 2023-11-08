@@ -17,7 +17,7 @@ Welcome to LLM Riddles! This is a game of wits and courage with language models.
 We provide an online version for players to directly access and try out. 
 - [ChatGPT + English(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
 - [ChatGPT + Chinese(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
-- [Mistral + English(w/ key)](https://5e6f7422e348fc7dec.gradio.live)
+- [Mistral + English(w/ key)](https://d9b451a97791dd8ef3.gradio.live)
 - [ChatGPT + Chinese(w/ key)](http://llmriddles.opendilab.net/)
 
 Local deployment can be done in the following ways:
