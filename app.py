@@ -1,13 +1,13 @@
+import logging
 import os
 import uuid
-import logging
 
 import gradio as gr
 
 from llmriddles.questions import QuestionExecutor
 from llmriddles.questions import list_ordered_questions
 
-_QUESTION_IDS = {}
+_QUESTION_SESSIONS = {}
 count = 0
 _QUESTIONS = list_ordered_questions()
 _LANG = os.environ.get('QUESTION_LANG', 'cn')
@@ -131,6 +131,11 @@ if __name__ == '__main__':
                 with gr.Row():
                     gr_submit = gr.Button(submit_label, interactive=False)
                     gr_next = gr.Button(next_label)
+                with gr.Row():
+                    gr_select = gr.Radio(
+                        choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
+                        label='ffffff'
+                    )
 
             with gr.Column():
                 gr_uuid = gr.Text(value='', visible=False)
@@ -140,34 +145,29 @@ if __name__ == '__main__':
         gr.Markdown(tos_markdown)
 
 
-        def _next_question(uuid_):
+        def _radio_select(uuid_, select_qid):
             global count
             if not uuid_:
                 uuid_ = str(uuid.uuid4())
                 count += 1
                 logging.info(f'Player {count} starts the game now')
-            global _QUESTION_IDS
-            _qid = _QUESTION_IDS.get(uuid_, -1)
-            _qid += 1
-            _QUESTION_IDS[uuid_] = _qid
-
-            if _qid >= len(_QUESTIONS):
-                del _QUESTION_IDS[uuid_]
-                logging.info(f'Player {count} has passed the game now')
-                return game_cleared_label, '', '', {}, '', \
-                    gr.Button(submit_label, interactive=False), \
-                    gr.Button(try_again_label, interactive=True), \
-                    ''
+            global _QUESTION_SESSIONS
+            if uuid_ not in _QUESTION_SESSIONS:
+                _QUESTION_SESSIONS[uuid_] = set(), select_qid
             else:
-                executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
-                return executor.question_text, '', '', {}, '', \
-                    gr.Button(submit_label, interactive=True), \
-                    gr.Button(next_label, interactive=False), \
-                    uuid_
+                _exists, _ = _QUESTION_SESSIONS[uuid_]
+                _QUESTION_SESSIONS[uuid_] = _exists, select_qid
 
-        gr_next.click(
-            fn=_next_question,
-            inputs=[gr_uuid],
+            executor = QuestionExecutor(_QUESTIONS[select_qid], _LANG)
+            return executor.question_text, '', '', {}, '', \
+                gr.Button(submit_label, interactive=True), \
+                gr.Button(next_label, interactive=False), \
+                uuid_
+
+
+        gr_select.select(
+            _radio_select,
+            inputs=[gr_uuid, gr_select],
             outputs=[
                 gr_requirement, gr_question, gr_answer,
                 gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid,
@@ -175,11 +175,61 @@ if __name__ == '__main__':
         )
 
 
+        def _next_question(uuid_):
+            global count
+            if not uuid_:
+                uuid_ = str(uuid.uuid4())
+                count += 1
+                logging.info(f'Player {count} starts the game now')
+            global _QUESTION_SESSIONS
+            if uuid_ in _QUESTION_SESSIONS:
+                _exists, _qid = _QUESTION_SESSIONS[uuid_]
+            else:
+                _exists, _qid = set(), -1
+            _qid += 1
+            _QUESTION_SESSIONS[uuid_] = _exists, _qid
+
+            if _qid >= len(_QUESTIONS):
+                del _QUESTION_SESSIONS[uuid_]
+                logging.info(f'Player {count} has passed the game now')
+                return game_cleared_label, '', '', {}, '', \
+                    gr.Button(submit_label, interactive=False), \
+                    gr.Button(try_again_label, interactive=True), \
+                    '', \
+                    gr.Radio(
+                        choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
+                        label='ffffff'
+                    )
+            else:
+                executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
+                return executor.question_text, '', '', {}, '', \
+                    gr.Button(submit_label, interactive=True), \
+                    gr.Button(next_label, interactive=False), \
+                    uuid_, \
+                    gr.Radio(
+                        choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
+                        value=_qid,
+                        label='ffffff'
+                    )
+
+
+        gr_next.click(
+            fn=_next_question,
+            inputs=[gr_uuid],
+            outputs=[
+                gr_requirement, gr_question, gr_answer,
+                gr_predict, gr_explanation, gr_submit, gr_next,
+                gr_uuid, gr_select,
+            ],
+        )
+
+
         def _submit_answer(qs_text: str, api_key: str, uuid_: str):
+            global _QUESTION_SESSIONS
             if _need_api_key() and not api_key:
                 raise gr.Error(api_error_info)
 
-            _qid = _QUESTION_IDS[uuid_]
+            _exists, _qid = _QUESTION_SESSIONS[uuid_]
             executor = QuestionExecutor(
                 _QUESTIONS[_qid], _LANG,
                 llm=_LLM, llm_cfgs=_get_api_key_cfgs(api_key) if _need_api_key() else {'api_key': _LLM_KEY}
@@ -187,9 +237,11 @@ if __name__ == '__main__':
             answer_text, correctness, explanation = executor.check(qs_text)
             labels = {correct_label: 1.0} if correctness else {wrong_label: 1.0}
             if correctness:
+                _QUESTION_SESSIONS[uuid_] = (_exists | {_qid}), _qid
                 return answer_text, labels, explanation, gr.Button(next_label, interactive=True), uuid_
             else:
                 return answer_text, labels, explanation, gr.Button(next_label, interactive=False), uuid_
+
 
         gr_submit.click(
             _submit_answer,
