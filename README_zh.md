@@ -48,7 +48,7 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 - Pull Request标题，示例：feature(username): 章节X-关卡设计
 - 希望被提及的ID
 - 对应章节问题文件的修改
-- __init__.py的修改
+- \__init__.py的修改
 
 完整示例请参考：[提交属于自己的关卡设计](https://github.com/opendilab/LLMRiddles/pull/6)
 
