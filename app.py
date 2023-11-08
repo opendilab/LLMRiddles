@@ -219,7 +219,7 @@ if __name__ == '__main__':
                     gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
                         value=_qid,
-                        label='ffffff'
+                        label=select_label,
                     )
 
 
