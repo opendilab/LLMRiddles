@@ -82,12 +82,12 @@ def _checker_3(question_text: str, user_text: str, answer_text: str, lang: str):
     _ = question_text, lang
     answer_text = answer_text.strip()
     user_text = user_text.strip()
-    if not check_if_is_number(question_text):
+    if not check_if_is_number(user_text):
         return False, "问题应该是一个正整数" if lang == 'cn' else 'Question should be a positive integer.'
-    elif int(question_text) == 1:
+    elif int(user_text) == 1:
         return False, "问题应该是一个大于1的正整数" if lang == 'cn' else 'Question should be a positive integer greater than 1.'
-    elif int(question_text) - 1 not in get_all_numbers_in_a_sentence(answer_text) or int(
-            question_text) + 1 not in get_all_numbers_in_a_sentence(answer_text):
+    elif int(user_text) - 1 not in get_all_numbers_in_a_sentence(answer_text) or int(
+            user_text) + 1 not in get_all_numbers_in_a_sentence(answer_text):
         return False, "回答中应该包含一个与问题相差1的数字" if lang == 'cn' else 'Answer should contain a number that is exactly 1 different from the question.'
     else:
         return True, None
