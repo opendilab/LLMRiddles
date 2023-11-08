@@ -43,7 +43,7 @@ The question format should include the following points:
 - Pull Request title, example: feature(username): Chapter X-Level Design
 - The ID you want to be mentioned
 - Modify the corresponding chapter question files
-- Modification of init.py
+- Modification of \__init__.py
 
 For a complete example, please refer to: [Submit your own level design](https://github.com/opendilab/LLMRiddles/pull/6)
 
