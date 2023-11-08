@@ -47,7 +47,7 @@ def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str):
     if count_words(user_text) < 10:
         return False, "用户的问题长度应该至少10个字" if lang == 'cn' else 'Question should be no less than 10 words.'
 
-    if answer_text == user_text:
+    if any(char in answer_text for char in user_text):
         return True, None
     else:
         return False, None
