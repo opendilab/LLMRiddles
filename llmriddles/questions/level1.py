@@ -1,13 +1,17 @@
 from .question import register_question
 
+
 def count_english_words(text: str):
     return len(text.split(' '))
+
 
 def count_chinese_words(text: str):
     return len(text)
 
+
 def check_if_chinese(text: str):
     return all('\u4e00' <= char <= '\u9fff' for char in text)
+
 
 def count_words(text: str, contain_punctuation: bool = False):
     chinese_words = []
@@ -29,9 +33,9 @@ def count_words(text: str, contain_punctuation: bool = False):
                     temp_english_words = []
                 other_words.append(char)
     if contain_punctuation:
-        return len(chinese_words)+len(english_words)+len(other_words)
+        return len(chinese_words) + len(english_words) + len(other_words)
     else:
-        return len(chinese_words)+len(english_words)
+        return len(chinese_words) + len(english_words)
 
 
 CN_TEXT_1 = """
@@ -57,11 +61,14 @@ def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str):
         return False, None
 
 
-register_question({
-    'cn': CN_TEXT_1,
-    'en': EN_TEXT_1,
-}, _checker_1)
-
+register_question(
+    {
+        'cn': CN_TEXT_1,
+        'en': EN_TEXT_1,
+    },
+    checkers=_checker_1,
+    name={'cn': '1-1 初来乍到', 'en': '1-1'},
+)
 
 CN_TEXT_2 = """
 第一章第二题（小试牛刀），请你输入三个字（及）以内的问题，使模型的回答在30个字以上。
@@ -89,11 +96,14 @@ def _checker_2(question_text: str, user_text: str, answer_text: str, lang: str):
         return True, None
 
 
-register_question({
-    'cn': CN_TEXT_2,
-    'en': EN_TEXT_2,
-}, _checker_2)
-
+register_question(
+    {
+        'cn': CN_TEXT_2,
+        'en': EN_TEXT_2,
+    },
+    checkers=_checker_2,
+    name={'cn': '1-2 小试牛刀', 'en': '1-2'},
+)
 
 CN_TEXT_3 = """
 第一章第三题（短说长话），请你输入一个字的问题，使模型的回答在100个字以上。
@@ -107,6 +117,7 @@ For the third question in chapter 1, please enter a one-word question so that th
 Please enter your query below and click the submit button
 """
 
+
 def _checker_3(question_text: str, user_text: str, answer_text: str, lang: str):
     _ = question_text, lang
     answer_text = answer_text.strip()
@@ -119,11 +130,15 @@ def _checker_3(question_text: str, user_text: str, answer_text: str, lang: str):
     else:
         return True, None
 
-register_question({
-    'cn': CN_TEXT_3,
-    'en': EN_TEXT_3,
-}, _checker_3)
 
+register_question(
+    {
+        'cn': CN_TEXT_3,
+        'en': EN_TEXT_3,
+    },
+    checkers=_checker_3,
+    name={'cn': '1-3 短说长话', 'en': '1-3'}
+)
 
 CN_TEXT_4 = """
 第一章第四题（短说短话），请输入一个字的问题，使模型的回答字数小于20个字。
@@ -137,6 +152,7 @@ For the fourth question in chapter 1, please enter a one-word question so that t
 Please enter your query below and click the submit button
 """
 
+
 def _checker_4(question_text: str, user_text: str, answer_text: str, lang: str):
     _ = question_text, lang
     answer_text = answer_text.strip()
@@ -149,11 +165,15 @@ def _checker_4(question_text: str, user_text: str, answer_text: str, lang: str):
     else:
         return True, None
 
-register_question({
-    'cn': CN_TEXT_4,
-    'en': EN_TEXT_4,
-}, _checker_4)
 
+register_question(
+    {
+        'cn': CN_TEXT_4,
+        'en': EN_TEXT_4,
+    },
+    checkers=_checker_4,
+    name={'cn': '1-4 短说短话', 'en': '1-4'},
+)
 
 # CN_TEXT_5 = """
 # 第一章第五题（回文不变），请输入一个本身不是回文串的问题，使无论正着问还是倒着问，模型的回答是一样的。

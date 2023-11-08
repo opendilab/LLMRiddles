@@ -1,5 +1,6 @@
-from .question import register_question
 import re
+
+from .question import register_question
 
 
 def check_if_is_number(text: str):
@@ -85,13 +86,19 @@ def _checker_3(question_text: str, user_text: str, answer_text: str, lang: str):
         return False, "问题应该是一个正整数" if lang == 'cn' else 'Question should be a positive integer.'
     elif int(question_text) == 1:
         return False, "问题应该是一个大于1的正整数" if lang == 'cn' else 'Question should be a positive integer greater than 1.'
-    elif int(question_text)-1 not in get_all_numbers_in_a_sentence(answer_text) or int(question_text)+1 not in get_all_numbers_in_a_sentence(answer_text):
+    elif int(question_text) - 1 not in get_all_numbers_in_a_sentence(answer_text) or int(
+            question_text) + 1 not in get_all_numbers_in_a_sentence(answer_text):
         return False, "回答中应该包含一个与问题相差1的数字" if lang == 'cn' else 'Answer should contain a number that is exactly 1 different from the question.'
     else:
         return True, None
 
 
-register_question({
-    'cn': CN_TEXT_3,
-    'en': EN_TEXT_3,
-}, _checker_3, level=4)
+register_question(
+    {
+        'cn': CN_TEXT_3,
+        'en': EN_TEXT_3,
+    },
+    checkers=_checker_3,
+    name={'cn': '4-3 自然之密', 'en': '4-3'},
+    level=4,
+)

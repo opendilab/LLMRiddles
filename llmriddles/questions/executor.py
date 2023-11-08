@@ -15,6 +15,10 @@ class QuestionExecutor:
     def question_text(self):
         return self.question.texts[self.lang]
 
+    @property
+    def question_name(self):
+        return self.question.names[self.lang]
+
     def check(self, qs_text: str) -> Tuple[str, bool, str]:
         answer_text = get_llm_fn(self.llm)(qs_text, **self.llm_cfgs)
         correct, explanation = self.check_answer(qs_text, answer_text)

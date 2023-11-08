@@ -54,13 +54,18 @@ def _en_checker_1(question_text: str, user_text: str, answer_text: str) -> Tuple
     return True, None
 
 
-register_question({
-    'cn': CN_TEXT_1,
-    'en': EN_TEXT_1,
-}, checkers={
-    'cn': _cn_checker_1,
-    'en': _en_checker_1,
-})
+register_question(
+    {
+        'cn': CN_TEXT_1,
+        'en': EN_TEXT_1,
+    },
+    checkers={
+        'cn': _cn_checker_1,
+        'en': _en_checker_1,
+    },
+    name={'cn': '2-1 质数长度', 'en': '2-1'},
+    level=2
+)
 
 CN_TEXT_2 = """
 第二章第二题（越说越大），请输入一个大于一的正整数作为问题，使回答里包含至少比它大一千的数。
@@ -102,13 +107,18 @@ def _en_checker_2(question_text: str, user_text: str, answer_text: str) -> Tuple
     return False, f'Did not detect a number of at least {value + 1000} in the output'
 
 
-register_question({
-    'cn': CN_TEXT_2,
-    'en': EN_TEXT_2,
-}, checkers={
-    'cn': _cn_checker_2,
-    'en': _en_checker_2,
-})
+register_question(
+    {
+        'cn': CN_TEXT_2,
+        'en': EN_TEXT_2,
+    },
+    checkers={
+        'cn': _cn_checker_2,
+        'en': _en_checker_2,
+    },
+    name={'cn': '2-2 越说越大', 'en': '2-2'},
+    level=2
+)
 
 CN_TEXT_3 = """
 第二章第三题（越说越小），请输入一个大于一的正整数作为问题，使回答里包含至少10个不同的至少比它小一千的自然数。
@@ -161,13 +171,18 @@ def _en_checker_3(question_text: str, user_text: str, answer_text: str) -> Tuple
                       f'but it doesn\'t reach 10: {collected_values!r}'
 
 
-register_question({
-    'cn': CN_TEXT_3,
-    'en': EN_TEXT_3,
-}, checkers={
-    'cn': _cn_checker_3,
-    'en': _en_checker_3,
-})
+register_question(
+    {
+        'cn': CN_TEXT_3,
+        'en': EN_TEXT_3,
+    },
+    checkers={
+        'cn': _cn_checker_3,
+        'en': _en_checker_3,
+    },
+    name={'cn': '2-3 越说越小', 'en': '2-3'},
+    level=2,
+)
 
 CN_TEXT_4 = """
 第二章第四题（警世名言），请在不提及1,4,5这三个字符的情况下让模型回答114514，不要有多余的字符。
@@ -191,13 +206,18 @@ def _en_checker_4(question_text: str, user_text: str, answer_text: str) -> Tuple
     return answer_text.strip() == '114514', None
 
 
-register_question({
-    'cn': CN_TEXT_4,
-    'en': EN_TEXT_4,
-}, checkers={
-    'cn': _cn_checker_4,
-    'en': _en_checker_4,
-})
+register_question(
+    {
+        'cn': CN_TEXT_4,
+        'en': EN_TEXT_4,
+    },
+    checkers={
+        'cn': _cn_checker_4,
+        'en': _en_checker_4,
+    },
+    name={'cn': '2-4 警世名言', 'en': '2-4'},
+    level=2,
+)
 
 CN_TEXT_5 = """
 第二章第五题（开平方数），请输入一个大于一的平方数作为问题，使回答里包含它的平方根对应的数。
@@ -245,13 +265,18 @@ def _en_checker_5(question_text: str, user_text: str, answer_text: str) -> Tuple
         return False, f'Square root {sq} not detected'
 
 
-register_question({
-    'cn': CN_TEXT_5,
-    'en': EN_TEXT_5,
-}, checkers={
-    'cn': _cn_checker_5,
-    'en': _en_checker_5,
-})
+register_question(
+    {
+        'cn': CN_TEXT_5,
+        'en': EN_TEXT_5,
+    },
+    checkers={
+        'cn': _cn_checker_5,
+        'en': _en_checker_5,
+    },
+    name={'cn': '2-5 开平方数', 'en': '2-5'},
+    level=2,
+)
 
 CN_TEXT_6 = """
 第二章第六题（得寸进狗），请提一个不包含“狗”这个字的10个字以内的问题，使回答中“狗”这个字出现的次数至少是问题字数的2倍。
@@ -290,10 +315,15 @@ def _en_checker_6(question_text: str, user_text: str, answer_text: str) -> Tuple
                       f'which is less than {len(q_words) * 2} times.'
 
 
-register_question({
-    'cn': CN_TEXT_6,
-    'en': EN_TEXT_6,
-}, checkers={
-    'cn': _cn_checker_6,
-    'en': _en_checker_6,
-})
+register_question(
+    {
+        'cn': CN_TEXT_6,
+        'en': EN_TEXT_6,
+    },
+    checkers={
+        'cn': _cn_checker_6,
+        'en': _en_checker_6,
+    },
+    name={'cn': '2-6 得寸进狗', 'en': '2-6'},
+    level=2
+)
