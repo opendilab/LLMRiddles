@@ -24,11 +24,8 @@ else:
 if _LANG == "cn":
     title = "完蛋！我被 LLM 拿捏了"
     requirement_ph = """
-    欢迎来到 LLM Riddles!
-
-    你将通过本游戏对大语言模型产生更深刻的理解。在本游戏中，你需要构造一个提给语言大模型的问题，使得它回复的答案符合题目要求。
-
-    点击\"下一题\"即可开始游戏
+    <h2 style="color: #6d28d9;"> 欢迎来到 LLM Riddles! </h2>
+    <h4> 你将通过本游戏对大语言模型产生更深刻的理解。在本游戏中，你需要构造一个提给语言大模型的问题，使得它回复的答案符合题目要求。点击<i>\"下一题\"</i> 即可开始游戏。</h4>
     """
     requirement_label = "游戏须知/说明"
     question_ph = "你对大语言模型的提问（例如：请你输出1+1=3）"
@@ -41,18 +38,19 @@ if _LANG == "cn":
     api_label = "API key"
     predict_label = "结果正确性"
     explanation_label = "结果详细解释"
-    game_cleared_label = "祝贺！你已成功通关！"
+    game_cleared_label = "<h2 style='color: #6d28d9;'>祝贺！你已成功通关！</h2>"
     correct_label = "正确"
     wrong_label = "错误"
     api_error_info = "请在提交问题之前先输入你的 API Key"
     try_again_label = "再玩一次"
+    select_label = "选择关卡（投机取巧需谨慎）"
     title_markdown = """
     <div align="center">
         <img src="https://raw.githubusercontent.com/opendilab/LLMRiddles/main/llmriddles/assets/banner.svg" width="80%" height="20%" alt="Banner Image">
     </div>
     <h2 style="text-align: center; color: black;"><a href="https://github.com/OpenDILab/LLMRiddles"> 🎭LLM Riddles：完蛋！我被 LLM 拿捏了</a></h2>
     <strong><h5 align="center"> 更多不同语言模型的在线试玩 demo 可以访问 GitHub<a href="https://github.com/OpenDILab/LLMRiddles">源代码仓库</a>获取<h5></strong>
-    <h4 align="center"> 如果你喜欢这个项目，请给我们在 GitHub 点个 star ✨ <a href="https://github.com/OpenDILab/LLMRiddles"> 代码仓库传送门 </a> 。我们将会持续保持更新。再次感谢游戏<a href="https://www.zhihu.com/people/haoqiang-fan"> 原作者 </a>的奇思妙想！  </h4>
+    <h5 align="center"> 如果你喜欢这个项目，请给我们在 GitHub 点个 star ✨ <a href="https://github.com/OpenDILab/LLMRiddles"> 代码仓库传送门 </a> 。我们将会持续保持更新。再次感谢游戏<a href="https://www.zhihu.com/people/haoqiang-fan"> 原作者 </a>的奇思妙想！  </h5>
     <strong><h5 align="center">注意：算法模型的输出可能包含一定的随机性。相关结果不代表任何开发者和相关 AI 服务的态度和意见。本项目开发者不对生成结果作任何保证，仅供娱乐。<h5></strong>
     """
     tos_markdown = """
@@ -66,11 +64,8 @@ if _LANG == "cn":
 elif _LANG == "en":
     title = "LLM Riddles: Oops! Rolling in LLM."
     requirement_ph = """
-    Welcome to LLM Riddles!
-
-    In this game, you'll gain a deeper understanding of language models. Your challenge is to create a question to ask a language model in a way that the answer it provides meets specific criteria.
-
-    Click \'Next\' to Start
+    <h2 style="color: #6d28d9;">Welcome to LLM Riddles! </h2>
+    <h4> In this game, you'll gain a deeper understanding of language models. Your challenge is to create a question to ask a language model in a way that the answer it provides meets specific criteria. Click <i>\'Next\'</i> to Start</h4>
     """
     requirement_label = "Game Requirements"
     question_ph = "Your Question for LLM (e.g. Please print 1+1=3)"
@@ -83,17 +78,18 @@ elif _LANG == "en":
     api_label = "API key"
     predict_label = "Correctness"
     explanation_label = "Explanation"
-    game_cleared_label = "Congratulations!"
+    game_cleared_label = "<h2 style='color: #6d28d9;'>Congratulations!</h2>"
     correct_label = "Correct"
     wrong_label = "Wrong"
     api_error_info = "Please Enter API Key Before Submitting Question."
     try_again_label = "Try Again"
+    select_label = "Select level"
     title_markdown = """
     <div align="center">
         <img src="https://raw.githubusercontent.com/opendilab/LLMRiddles/main/llmriddles/assets/banner.svg" width="80%" height="20%" alt="Banner Image">
     </div>
     <h2 style="text-align: center; color: black;"><a href="https://github.com/OpenDILab/LLMRiddles"> 🎭LLM Riddles: Oops! Rolling in LLM.</a></h2>
-    <h4 align="center"> If you like our project, please give us a star ✨ on GitHub for latest update <a href="https://github.com/OpenDILab/LLMRiddles"> (Code Link) </a>. Thanks for the interesting idea of the original game <a href="https://www.zhihu.com/people/haoqiang-fan"> author </a>.  </h4>
+    <h5 align="center"> If you like our project, please give us a star ✨ on GitHub for latest update <a href="https://github.com/OpenDILab/LLMRiddles"> (Code Link) </a>. Thanks for the interesting idea of the original game <a href="https://www.zhihu.com/people/haoqiang-fan"> author </a>.  </h5>
     <strong><h5 align="center">Notice: The output is generated by algorithm scheme and may involve some randomness. It does not represent the attitudes and opinions of any developers and AI services in this project. We do not make any guarantees about the generated content.<h5></strong>
     """
     tos_markdown = """
@@ -124,7 +120,7 @@ if __name__ == '__main__':
         gr.Markdown(title_markdown)
 
         with gr.Row():
-            gr_requirement = gr.TextArea(placeholder=requirement_ph, label=requirement_label, lines=4)
+            gr_requirement = gr.HTML(value=requirement_ph, label=requirement_label)
         with gr.Row():
             with gr.Column():
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
@@ -135,7 +131,7 @@ if __name__ == '__main__':
                 with gr.Row():
                     gr_select = gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
-                        label='ffffff'
+                        label=select_label
                     )
 
             with gr.Column():
@@ -144,6 +140,18 @@ if __name__ == '__main__':
                 gr_answer = gr.TextArea(label=answer_label, lines=3)
                 gr_explanation = gr.TextArea(label=explanation_label, lines=1)
         gr.Markdown(tos_markdown)
+
+        def _postprocess_question_text(question_text):
+            if _LANG == 'cn':
+                idx = question_text.find('，')
+                question_title = question_text[:idx]
+                former, latter = question_title.split('（')
+                question_title = former + '：' + latter[:-1]
+                question_text = f"<h2 style='color: #6d28d9;'>{question_title}</h2><h4>{question_text[idx+1:]}</h4>"
+            elif _LANG == 'en':
+                idx = question_text.find(',')
+                question_text = f"<h2 style='color: #6d28d9;'>{question_text[:idx]}</h2><h4>{question_text[idx+1:]}</h4>"
+            return question_text
 
 
         def _radio_select(uuid_, select_qid):
@@ -160,11 +168,11 @@ if __name__ == '__main__':
                 _QUESTION_SESSIONS[uuid_] = _exists, select_qid
 
             executor = QuestionExecutor(_QUESTIONS[select_qid], _LANG)
-            return executor.question_text, '', '', {}, '', \
+            question_text = _postprocess_question_text(executor.question_text)
+            return question_text, '', '', {}, '', \
                 gr.Button(submit_label, interactive=True), \
                 gr.Button(next_label, interactive=False), \
                 uuid_
-
 
         gr_select.select(
             _radio_select,
@@ -199,11 +207,12 @@ if __name__ == '__main__':
                     '', \
                     gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
-                        label='ffffff'
+                        label=select_label
                     )
             else:
                 executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
-                return executor.question_text, '', '', {}, '', \
+                question_text = _postprocess_question_text(executor.question_text)
+                return question_text, '', '', {}, '', \
                     gr.Button(submit_label, interactive=True), \
                     gr.Button(next_label, interactive=False), \
                     uuid_, \
