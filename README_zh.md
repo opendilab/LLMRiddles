@@ -8,6 +8,8 @@
 	<br>
 </div>
 
+[English](https://github.com/opendilab/LLMRiddles/blob/main/README.md) | 简体中文
+
 ## :thinking: 什么是LLM Riddles
 欢迎来到 LLM Riddles！这是一个与语言模型斗智斗勇的游戏。在游戏中，你需要构造与语言模型交互的问题，来得到符合要求的答案。在这个过程中，你可以开动脑筋，用你想到的所有方式，让模型输出答案要求的结果。
 
@@ -56,6 +58,7 @@ QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
 - [x] 在线试玩链接
 - [x] Hugging Face Space 链接
 - [x] 支持Mistral-7B（英文）
+- [ ] 支持ChatGLM（中文）
 - [ ] 支持Baichuan2-7B（中文）
 - [ ] 支持LLaMA2-7B（英文）
 - [ ] LLM 推理速度优化
