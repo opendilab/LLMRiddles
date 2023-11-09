@@ -9,4 +9,3 @@ flask
 transformers
 torch
 huggingface-hub
-Pillow

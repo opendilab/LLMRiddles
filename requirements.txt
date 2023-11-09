@@ -5,5 +5,3 @@ gradio==4.1.1
 openai>=1
 zhipuai
 sympy
-flask
-transformers
