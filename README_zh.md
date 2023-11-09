@@ -15,10 +15,13 @@
 
 ## :space_invader: 如何试玩
 我们提供了在线版本以供玩家直接访问试玩:
-- [ChatGPT + 英文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
-- [ChatGPT + 中文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
-- [Mistral + 英文(已预设api key)](https://d9b451a97791dd8ef3.gradio.live)
-- [ChatGPT + 中文(已预设api key)](http://llmriddles.opendilab.net/)
+- [Hugging Face][ChatGPT + 英文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
+- [Hugging Face][ChatGPT + 中文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
+- [Hugging Face][ChatGLM + 中文(已预设api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGLMCN)
+- [OpenXLab][ChatGPT + 英文(需配置api key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGPTCN)
+- [OpenXLab][ChatGLM + 中文(已预设api key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGLMCN)
+- [Private Server][Mistral + 英文(已预设api key)](https://d9b451a97791dd8ef3.gradio.live)
+- [Private Server][ChatGPT + 中文(已预设api key)](http://llmriddles.opendilab.net/)
 
 本地部署可以通过以下方式：
 ## 安装
@@ -76,6 +79,7 @@ QUESTION_LANG=en QUESTION_LLM='mistral-7b' python3 -u app.py
 - [ ] 支持Baichuan2-7B（中文）
 - [ ] 支持LLaMA2-7B（英文）
 - [ ] LLM 推理速度优化
+- [ ] 更多题目和题解
 
 ## :speech_balloon: 反馈问题 & 提出建议
 - 在 GitHub 上[发起 Issue](https://github.com/opendilab/CodeMorpheus/issues/new/choose)

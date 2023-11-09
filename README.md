@@ -15,10 +15,13 @@ Welcome to LLM Riddles! This is a game of wits and courage with language models.
 
 ## :space_invader: How to Play
 We provide an online version for players to directly access and try out. 
-- [ChatGPT + English(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
-- [ChatGPT + Chinese(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
-- [Mistral + English(w/ key)](https://d9b451a97791dd8ef3.gradio.live)
-- [ChatGPT + Chinese(w/ key)](http://llmriddles.opendilab.net/)
+- [Hugging Face][ChatGPT + English(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
+- [Hugging Face][ChatGPT + Chinese(w/o key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
+- [Hugging Face][ChatGLM + Chinese(w/ key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGLMCN)
+- [OpenXLab][ChatGPT + English(w/o key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGPTCN)
+- [OpenXLab][ChatGLM + Chinese(w/ key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGLMCN)
+- [Private Server][Mistral + English(w/ key)](https://d9b451a97791dd8ef3.gradio.live)
+- [Private Server][ChatGPT + Chinese(w/ key)](http://llmriddles.opendilab.net/)
 
 Local deployment can be done in the following ways:
 ## Installation

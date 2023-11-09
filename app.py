@@ -49,6 +49,7 @@ if _LANG == "cn":
         <img src="https://raw.githubusercontent.com/opendilab/LLMRiddles/main/llmriddles/assets/banner.svg" width="80%" height="20%" alt="Banner Image">
     </div>
     <h2 style="text-align: center; color: black;"><a href="https://github.com/OpenDILab/LLMRiddles"> 🎭LLM Riddles：完蛋！我被 LLM 拿捏了</a></h2>
+    <strong><h5 align="center"> 其他在线示例：中文在线试玩版本<a href="https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGLMCN">（OpenXLab）</a> | 中文在线试玩版本<a href="https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGLMCN">（Hugging Face）</a> <h5></strong>
     <strong><h5 align="center"> 更多不同语言模型的在线试玩 demo 可以访问 GitHub<a href="https://github.com/OpenDILab/LLMRiddles">源代码仓库</a>获取<h5></strong>
     <h5 align="center"> 如果你喜欢这个项目，请给我们在 GitHub 点个 star ✨ <a href="https://github.com/OpenDILab/LLMRiddles"> 代码仓库传送门 </a> 。我们将会持续保持更新。再次感谢游戏<a href="https://www.zhihu.com/people/haoqiang-fan"> 原作者 </a>的奇思妙想！  </h5>
     <strong><h5 align="center">注意：算法模型的输出可能包含一定的随机性。相关结果不代表任何开发者和相关 AI 服务的态度和意见。本项目开发者不对生成结果作任何保证，仅供娱乐。<h5></strong>
