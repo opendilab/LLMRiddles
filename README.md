@@ -21,6 +21,16 @@ We provide an online version for players to directly access and try out.
 - [ChatGPT + Chinese(w/ key)](http://llmriddles.opendilab.net/)
 
 Local deployment can be done in the following ways:
+## Installation
+### Use ChatGPT / ChatGLM API
+```shell
+pip3 install -r requirements.txt
+```
+### Do Mistral-7B-Instruct-v0.1 local inference
+```shell
+pip3 install -r requirements-dev.txt
+```
+## Launch
 ### ChatGPT + Chinese
 ```shell
 QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
@@ -28,6 +38,14 @@ QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 
 ### ChatGPT + English
 ```shell
 QUESTION_LANG=en QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
+```
+### ChatGLM + Chinese
+```shell
+QUESTION_LANG=cn QUESTION_LLM='chatglm' QUESTION_LLM_KEY=<your API key> python3 -u app.py
+```
+### ChatGLM + English
+```shell
+QUESTION_LANG=en QUESTION_LLM='chatglm' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
 ### Mistral-7B-Instruct-v0.1 + English
 ```shell

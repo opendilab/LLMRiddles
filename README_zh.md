@@ -21,6 +21,16 @@
 - [ChatGPT + 中文(已预设api key)](http://llmriddles.opendilab.net/)
 
 本地部署可以通过以下方式：
+## 安装
+### ChatGPT 或 ChatGLM API
+```shell
+pip3 install -r requirements.txt
+```
+### Mistral-7B-Instruct-v0.1 本地推理
+```shell
+pip3 install -r requirements-dev.txt
+```
+## 启动
 ### ChatGPT + 中文
 ```shell
 QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
@@ -29,13 +39,17 @@ QUESTION_LANG=cn QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 
 ```shell
 QUESTION_LANG=en QUESTION_LLM='chatgpt' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
-### LLaMA2-7b + 中文
+### ChatGLM + 中文
 ```shell
-QUESTION_LANG=cn QUESTION_LLM='llama2-7b' python3 -u app.py
+QUESTION_LANG=cn QUESTION_LLM='chatglm' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
-### LLaMA2-7b + 英文
+### ChatGLM + 英文
 ```shell
-QUESTION_LANG=en QUESTION_LLM='llama2-7b' python3 -u app.py
+QUESTION_LANG=en QUESTION_LLM='chatglm' QUESTION_LLM_KEY=<your API key> python3 -u app.py
+```
+### Mistral-7B-Instruct-v0.1 + 英文
+```shell
+QUESTION_LANG=en QUESTION_LLM='mistral-7b' python3 -u app.py
 ```
 ## :technologist: 为什么制作这个游戏
 
