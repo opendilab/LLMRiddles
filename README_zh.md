@@ -72,7 +72,7 @@ QUESTION_LANG=en QUESTION_LLM='mistral-7b' python3 -u app.py
 - [x] 在线试玩链接
 - [x] Hugging Face Space 链接
 - [x] 支持Mistral-7B（英文）
-- [ ] 支持ChatGLM（中文）
+- [x] 支持ChatGLM（中文和英文）
 - [ ] 支持Baichuan2-7B（中文）
 - [ ] 支持LLaMA2-7B（英文）
 - [ ] LLM 推理速度优化
@@ -86,6 +86,7 @@ QUESTION_LANG=en QUESTION_LLM='mistral-7b' python3 -u app.py
 ## :star2: Special Thanks
 - 感谢 [Haoqiang Fan](https://www.zhihu.com/people/haoqiang-fan) 的原始创意和题目，为本项目的开发和扩展提供了灵感与动力。
 - 感谢 [HuggingFace](https://huggingface.co) 对游戏的支持与协助。
+- 感谢 [ChatGLM](https://chatglm.cn/) 对游戏的支持与协助，特别是供在线预览版使用的足量 tokens。
 - 感谢 [LLM Riddles contributors](https://github.com/opendilab/LLMRiddles/graphs/contributors) 的实现与支持。
 
 ## :label: License

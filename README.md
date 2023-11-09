@@ -26,7 +26,7 @@ Local deployment can be done in the following ways:
 ```shell
 pip3 install -r requirements.txt
 ```
-### Do Mistral-7B-Instruct-v0.1 local inference
+### Deploy Mistral-7B-Instruct-v0.1 for local inference
 ```shell
 pip3 install -r requirements-dev.txt
 ```
@@ -71,10 +71,11 @@ For a complete example, please refer to: [Submit your own level design](https://
 - [x] Online trial link
 - [x] Hugging Face Space link
 - [x] Support Mistral-7B（English version）
-- [ ] Support ChatGLM（Chinese version）
+- [x] Support ChatGLM（Chinese and English version）
 - [ ] Support Baichuan2-7B（Chinese version）
 - [ ] Support LLaMA2-7B（English version）
 - [ ] LLM inference speed optimization
+- [ ] More question levels and solution blogs
 
 ## :speech_balloon: Feedback and Contribution
 - [Start an Issue](https://github.com/opendilab/CodeMorpheus/issues/new/choose) on GitHub
@@ -85,6 +86,7 @@ For a complete example, please refer to: [Submit your own level design](https://
 ## :star2: Special Thanks
 - Thanks to [Haoqiang Fan](https://www.zhihu.com/people/haoqiang-fan) for his original idea and title, which provided inspiration and motivation for the development and expansion of this project.
 - Thanks to [HuggingFace](https://huggingface.co) for supporting and assisting the game.
+- Thanks to [ChatGLM](https://chatglm.cn) for supporting and assisting the game, especially sufficient inference token support.
 - Thanks to [LLM Riddles contributors](https://github.com/opendilab/LLMRiddles/graphs/contributors) for their implementation and support.
 
 ## :label: License
