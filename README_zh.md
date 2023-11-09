@@ -17,8 +17,10 @@
 我们提供了在线版本以供玩家直接访问试玩:
 - [Hugging Face][ChatGPT + 英文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTEN)
 - [Hugging Face][ChatGPT + 中文(需配置api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGPTCN)
+- [Hugging Face][ChatGLM + 英文(已预设api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGLMEN)
 - [Hugging Face][ChatGLM + 中文(已预设api key)](https://huggingface.co/spaces/OpenDILabCommunity/LLMRiddlesChatGLMCN)
 - [OpenXLab][ChatGPT + 中文(需配置api key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGPTCN)
+- [OpenXLab][ChatGPT + 英文(需配置api key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGPTEN)
 - [OpenXLab][ChatGLM + 中文(已预设api key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGLMCN)
 - [OpenXLab][ChatGLM + 英文(已预设api key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGLMEN)
 - [Private Server][Mistral + 英文(已预设api key)](https://d9b451a97791dd8ef3.gradio.live)
