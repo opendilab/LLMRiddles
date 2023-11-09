@@ -13,7 +13,7 @@ _QUESTIONS = list_ordered_questions()
 _LANG = os.environ.get('QUESTION_LANG', 'cn')
 assert _LANG in ['cn', 'en'], _LANG
 _LLM = os.environ.get('QUESTION_LLM', 'chatgpt')
-assert _LLM in ['chatgpt', 'mistral-7b'], _LLM
+assert _LLM in ['chatgpt', 'chatglm', 'mistral-7b'], _LLM
 _LLM_KEY = os.environ.get('QUESTION_LLM_KEY', None)
 _DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
 
@@ -105,11 +105,13 @@ else:
 
 
 def _need_api_key():
-    return _LLM == 'chatgpt' and _LLM_KEY is None
+    return (_LLM == 'chatgpt' or _LLM == 'chatglm') and _LLM_KEY is None
 
 
 def _get_api_key_cfgs(api_key):
     if _LLM == 'chatgpt':
+        return {'api_key': api_key}
+    elif _LLM == 'chatglm':
         return {'api_key': api_key}
     else:
         return {}
