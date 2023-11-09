@@ -11,7 +11,7 @@ license: apache-2.0
 python_version: 3.8
 ---
 
-# LLMRiddles
+# LLM Riddles
 
 <div align="center">
 	<br>
