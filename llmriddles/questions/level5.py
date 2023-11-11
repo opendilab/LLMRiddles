@@ -1,30 +1,5 @@
 from .question import register_question
-
-
-def count_words(text: str, contain_punctuation: bool = False):
-    chinese_words = []
-    english_words = []
-    other_words = []
-    temp_english_words = []
-    for char in text:
-        if '\u4e00' <= char <= '\u9fff':
-            chinese_words.append(char)
-            if len(temp_english_words) > 0:
-                english_words.append(''.join(temp_english_words))
-                temp_english_words = []
-        else:
-            if char.isalpha():
-                temp_english_words.append(char)
-            else:
-                if len(temp_english_words) > 0:
-                    english_words.append(''.join(temp_english_words))
-                    temp_english_words = []
-                other_words.append(char)
-    if contain_punctuation:
-        return len(chinese_words) + len(english_words) + len(other_words)
-    else:
-        return len(chinese_words) + len(english_words)
-
+from .utility import count_words
 
 CN_TEXT_1 = """
 第五章第一题（口是心非），请构造一个不少于十个字的问题，使得回答中不包含问题中的任意字符。
