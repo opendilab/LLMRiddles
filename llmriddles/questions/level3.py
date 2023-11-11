@@ -33,7 +33,7 @@ CN_TEXT_1 = """
 """
 
 EN_TEXT_1 = """
-For the first question in chapter 3, please enter a question of at least ten words so that the model's answer is exatly the same with the question.
+For the first question in chapter 3, please enter a question of at least ten words so that the model's answer is exactly the same with the question.
 
 Please enter your query below and click the submit button
 """
