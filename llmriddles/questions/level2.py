@@ -4,6 +4,7 @@ from typing import Optional, Tuple
 import sympy
 
 from .question import register_question
+from .math_tools import get_all_numbers
 
 CN_TEXT_1 = """
 第二章第一题（质数长度），你需要提出一个字数是质数的问题，使回答的长度刚好是它的下一个质数。
@@ -83,8 +84,7 @@ def _cn_checker_2(question_text: str, user_text: str, answer_text: str) -> Tuple
     except (TypeError, ValueError):
         return False, f'输入内容{user_text!r}，并非一个大于1的正整数'
 
-    for value_item in re.findall('[-+]?\d+', answer_text):
-        value_item = int(value_item)
+    for value_item in get_all_numbers(answer_text):
         if value_item >= value + 1000:
             return True, f'检测到输出中数字{value_item}，满足要求'
 
@@ -99,8 +99,7 @@ def _en_checker_2(question_text: str, user_text: str, answer_text: str) -> Tuple
     except (TypeError, ValueError):
         return False, f'You entered {user_text!r}, which is not a positive integer greater than 1'
 
-    for value_item in re.findall('[-+]?\d+', answer_text):
-        value_item = int(value_item)
+    for value_item in get_all_numbers(answer_text):
         if value_item >= value + 1000:
             return True, f'Detected the number {value_item} in the output, which meets the requirement'
 
@@ -137,8 +136,7 @@ def _cn_checker_3(question_text: str, user_text: str, answer_text: str) -> Tuple
         return False, f'输入内容{user_text!r}，并非一个大于1的正整数'
 
     collected_values = []
-    for value_item in re.findall('[-+]?\d+', answer_text):
-        value_item = int(value_item)
+    for value_item in get_all_numbers(answer_text):
         if value_item <= value - 1000:
             collected_values.append(value_item)
 
@@ -158,8 +156,7 @@ def _en_checker_3(question_text: str, user_text: str, answer_text: str) -> Tuple
         return False, f'You entered {user_text!r}, which is not a positive integer greater than 1'
 
     collected_values = []
-    for value_item in re.findall('[-+]?\d+', answer_text):
-        value_item = int(value_item)
+    for value_item in get_all_numbers(answer_text):
         if value_item <= value - 1000:
             collected_values.append(value_item)
 
@@ -238,8 +235,7 @@ def _cn_checker_5(question_text: str, user_text: str, answer_text: str) -> Tuple
         return False, f'输入内容{user_text!r}，并非一个大于1的平方数'
 
     sq = int(value ** 0.5)
-    for value_item in re.findall('[-+]?\d+', answer_text):
-        value_item = int(value_item)
+    for value_item in get_all_numbers(answer_text):
         if value_item == sq:
             return True, f'检测到平方根数{sq}'
     else:
@@ -257,8 +253,7 @@ def _en_checker_5(question_text: str, user_text: str, answer_text: str) -> Tuple
         return False, f'The input, {user_text!r}, is not a square number greater than 1'
 
     sq = int(value ** 0.5)
-    for value_item in re.findall('[-+]?\d+', answer_text):
-        value_item = int(value_item)
+    for value_item in get_all_numbers(answer_text):
         if value_item == sq:
             return True, f'Detected square root: {sq}'
     else:
