@@ -23,8 +23,9 @@ We provide an online version for players to directly access and try out.
 - [OpenXLab][ChatGPT + English(w/o key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGPTEN)
 - [OpenXLab][ChatGLM + Chinese(w/ key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGLMCN)
 - [OpenXLab][ChatGLM + English(w/ key)](https://openxlab.org.cn/apps/detail/OpenDILab/LLMRiddlesChatGLMEN)
-- [Private Server][Mistral + English(w/ key)](https://d9b451a97791dd8ef3.gradio.live)
 - [Private Server][ChatGPT + Chinese(w/ key)](http://llmriddles.opendilab.net/)
+
+We also provide a technical blog about hints and solutions: [link](https://zhuanlan.zhihu.com/p/667801731)
 
 Local deployment can be done in the following ways:
 ## Installation
@@ -78,10 +79,11 @@ For a complete example, please refer to: [Submit your own level design](https://
 - [x] Hugging Face Space link
 - [x] Support Mistral-7B（English version）
 - [x] Support ChatGLM（Chinese and English version）
+- [x] Solution blogs
 - [ ] Support Baichuan2-7B（Chinese version）
 - [ ] Support LLaMA2-7B（English version）
 - [ ] LLM inference speed optimization
-- [ ] More question levels and solution blogs
+- [ ] More question levels
 
 ## :speech_balloon: Feedback and Contribution
 - [Start an Issue](https://github.com/opendilab/CodeMorpheus/issues/new/choose) on GitHub
