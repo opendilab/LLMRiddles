@@ -8,7 +8,7 @@
 	<br>
 </div>
 
-[English](https://github.com/opendilab/LLMRiddles/blob/main/README.md) | 简体中文
+[English](https://github.com/opendilab/LLMRiddles/blob/main/README.md) | 简体中文 | [日本語](https://github.com/opendilab/LLMRiddles/blob/main/README_ja.md)
 
 ## :thinking: 什么是LLM Riddles
 欢迎来到 LLM Riddles！这是一个与语言模型斗智斗勇的游戏。在游戏中，你需要构造与语言模型交互的问题，来得到符合要求的答案。在这个过程中，你可以开动脑筋，用你想到的所有方式，让模型输出答案要求的结果。
