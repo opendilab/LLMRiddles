@@ -7,7 +7,12 @@
 	</a>
 	<br>
 </div>
-
+</p>
+<p align="center" class="trendshift">
+  <a href="https://trendshift.io/repositories/4774" target="_blank">
+    <img src="https://trendshift.io/api/badge/repositories/4774" alt="SocialSisterYi%2Fbilibili-API-collect | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/>
+  </a>
+</p>
 [English](https://github.com/opendilab/LLMRiddles/blob/main/README.md) | [简体中文](https://github.com/opendilab/LLMRiddles/blob/main/README_zh.md) | 日本語
 
 ## :thinking: これは何ですか？
