@@ -8,7 +8,7 @@
 	<br>
 </div>
 
-English | [简体中文](https://github.com/opendilab/LLMRiddles/blob/main/README_zh.md)
+English | [简体中文](https://github.com/opendilab/LLMRiddles/blob/main/README_zh.md) | [日本語](https://github.com/opendilab/LLMRiddles/blob/main/README_ja.md)
 
 ## :thinking: What's This
 Welcome to LLM Riddles! This is a game of wits and courage with language models. In the game, you need to construct questions that interact with the language model to get answers that meet the requirements. In this process, you can use your brain and use all the methods you can think of to get the model to output the results required by the answer.
