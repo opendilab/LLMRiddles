@@ -2,14 +2,13 @@ from .question import register_question
 from .utility import count_words
 
 CN_TEXT_1 = """
-第六章第一题（口非心是），请构造一个不少于十个字的问题，使得回答在不重复问题的句子的情况下，包含问题中的所有字符。
+第六章第一题（勇于拒绝），请构造一个十字以上的问题，在不提到"不"的情况下，让模型只输出"不"。
 
 请在下面的输入框内填写你的提问并点击按钮提交。
 """
 
 EN_TEXT_1 = """
-For the first question in chapter 6, Please construct a question of at least ten words so that the answer contains all the characters in the question without repeating the sentence of the question.
-
+For the first question in chapter 6, Construct a question with more than a cross so that the model only outputs "no" without saying "no".
 Please enter your query below and click the submit button
 """
 
@@ -26,11 +25,11 @@ def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str):
         answer_text = answer_text.split()
         user_text = user_text.split()
     
-    if not any(each in answer_text for each in user_text):
-        return False, "回答中必须包含问题中的所有字符" if lang == 'cn' else 'The answer must contain all the characters in the question.'
+    if "不" in user_text:
+        return False, "问题中不能包含‘不’" if lang == 'cn' else "The question can not contain 'no' ."
     
-    if user_text in answer_text:
-        return False, "回答中不能直接复制整个问题句子"
+    if answer_text == 'no':
+        return True , None 
     else:
         return True, None
     
@@ -43,6 +42,6 @@ register_question(
         'en': EN_TEXT_1,
     },
     checkers=_checker_1,
-    name={'cn': '6-1 口非心是', 'en': '6-1'},
+    name={'cn': '6-1 勇于说不', 'en': '6-1'},
     level=6,
 )
