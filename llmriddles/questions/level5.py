@@ -13,11 +13,14 @@ For the first question in chapter 5, Please construct a question of no less than
 Please enter your query below and click the submit button
 """
 
+def count_words(text: str) -> int:
+    """计算字符串中的字符数量，每个字符都被单独计算"""
+    return len(text)
 
-def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str):
+def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str)-> tuple[bool, str | None]:
     _ = question_text, lang
-    answer_text = answer_text.strip()
-    user_text = user_text.strip()
+    answer_text = str(answer_text).strip()
+    user_text = str(user_text).strip()
 
     if count_words(user_text) < 10:
         return False, "用户的问题长度应该至少10个字" if lang == 'cn' else 'Question should be no less than 10 words.'
@@ -54,8 +57,11 @@ For the second question in chapter 5, Please construct a question of at least te
 Please enter your query below and click the submit button
 """
 
+def count_words(text: str) -> int:
+    """计算字符串中的字符数量，每个字符都被单独计算"""
+    return len(text)
 
-def _checker_2(question_text: str, user_text: str, answer_text: str, lang: str):
+def _checker_2(question_text: str, user_text: str, answer_text: str, lang: str)-> tuple[bool, str | None]:
     _ = question_text, lang
     answer_text = answer_text.strip()
     user_text = user_text.strip()

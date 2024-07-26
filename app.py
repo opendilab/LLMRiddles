@@ -17,6 +17,33 @@ assert _LLM in ['chatgpt', 'chatglm', 'deepseek', 'mistral-7b'], _LLM
 _LLM_KEY = os.environ.get('QUESTION_LLM_KEY', None)
 _DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
 
+level_tips = {
+    0: "直接告诉模型不要加其他的话",
+    1: "试试说，多说点。",
+    2: "试试选择一个复杂或深度话题",
+    3: "试试进行问候吧",
+    4: "使 prompt 几乎是回文串，并要求 LLM 输出指定内容",
+    5: "换个形容描述狗吧",
+    6: "直接要求 LLM 输出指定数量的某个字",
+    7: "试试与「进制」相关的 prompt 吧",
+    8: "试试让其生成列表式的回答吧",
+    9: "联想一下什么和114514有关吧",
+    10: "尽情试验一些数字吧",
+    11: "试试说「犬」的同义字",
+    12: "试试直接点的要求吧",
+    13: "试试输入一个回文串，并要求 LLM 将输入原样输出",
+    14: "尝试提问关于数学规则的创意性改变",
+    15: "试试要求 LLM 在观察到正序时说「你好」，逆序时说「好你」",
+    16: "要求 LLM 复读 prompt，但在 prompt 里面留一个标志；每次回答时，对标志进行翻转",
+    17: "输入问候语",
+    18: "多尝试些数字吧",
+    19: "试试让 LLM 背诵圆周率",
+    20: "试试让 LLM 造句吧",
+    21: "发挥想象吧"
+    # 根据需要继续添加
+}
+
+
 if _DEBUG:
     logging.getLogger().setLevel(logging.INFO)
 else:
@@ -119,6 +146,10 @@ def _get_api_key_cfgs(api_key):
     else:
         return {}
 
+def show_tip(level_index):
+    # 获取提示信息
+    tip = level_tips.get(level_index, "没有相关提示。")
+    return tip
 
 if __name__ == '__main__':
     with gr.Blocks(title=title, theme='ParityError/Interstellar') as demo:
@@ -130,6 +161,11 @@ if __name__ == '__main__':
             with gr.Column():
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
+                gr_show_tip = gr.Button("提示")
+                gr_tip = gr.Text(value="点击“提示”即可获得提示。", label="提示信息")
+
+                
+
                 with gr.Row():
                     gr_submit = gr.Button(submit_label, interactive=False)
                     gr_next = gr.Button(next_label)
@@ -145,6 +181,14 @@ if __name__ == '__main__':
                 gr_answer = gr.TextArea(label=answer_label, lines=3)
                 gr_explanation = gr.TextArea(label=explanation_label, lines=1)
         gr.Markdown(tos_markdown)
+
+        gr_show_tip.click(show_tip, inputs=[gr_select], outputs=[gr_tip])
+
+        def show_tip(level_index):
+            tip = level_tips.get(level_index, "没有相关提示。")
+            return tip
+        gr_show_tip.click(show_tip, inputs=[gr_select], outputs=[gr_tip])
+
 
         def _postprocess_question_text(question_text):
             if _LANG == 'cn':
@@ -177,14 +221,15 @@ if __name__ == '__main__':
             return question_text, '', '', {}, '', \
                 gr.Button(submit_label, interactive=True), \
                 gr.Button(next_label, interactive=False), \
-                uuid_
-
+                uuid_, \
+                "点击“提示”即可获得提示。"  # 更新提示信息
+        
         gr_select.select(
             _radio_select,
             inputs=[gr_uuid, gr_select],
             outputs=[
                 gr_requirement, gr_question, gr_answer,
-                gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid,
+                gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid, gr_tip
             ],
         )
 
@@ -263,6 +308,7 @@ if __name__ == '__main__':
             inputs=[gr_question, gr_api_key, gr_uuid],
             outputs=[gr_answer, gr_predict, gr_explanation, gr_next, gr_uuid],
         )
+
 
     concurrency = int(os.environ.get('CONCURRENCY', os.cpu_count()))
     favicon_path = os.path.join(os.path.dirname(__file__), 'llmriddles', 'assets', 'avatar.png')
