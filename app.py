@@ -162,14 +162,20 @@ if __name__ == '__main__':
             with gr.Column():
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
-                gr_show_tip = gr.Button("提示")
-                gr_tip = gr.TextArea(placeholder=tip_ph, label=tip_label, interactive=True)
 
                 
 
                 with gr.Row():
                     gr_submit = gr.Button(submit_label, interactive=False)
                     gr_next = gr.Button(next_label)
+
+                with gr.Row():
+                    gr_tip = gr.TextArea(placeholder=tip_ph, label=tip_label, interactive=True)    
+                    
+
+                with gr.Row():    
+                    gr_show_tip = gr.Button("提示")
+
                 with gr.Row():
                     gr_select = gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
