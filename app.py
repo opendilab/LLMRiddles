@@ -59,6 +59,8 @@ if _LANG == "cn":
     question_label = "玩家提问栏"
     answer_ph = "大语言模型的回答"
     answer_label = "大语言模型回答栏"
+    tip_ph = "点击获得提示"
+    tip_label = "提示信息"
     submit_label = "提交"
     next_label = "下一题"
     api_ph = "你个人的大语言模型 API Key (例如：ChatGPT)"
@@ -100,6 +102,8 @@ elif _LANG == "en":
     question_label = "Question"
     answer_ph = "Answer From LLM"
     answer_label = "Answer"
+    tip_ph = "Click to get tips"
+    tip_label = "Tips"
     submit_label = "Submit"
     next_label = "Next"
     api_ph = "Your API Key (e.g. ChatGPT)"
@@ -137,14 +141,11 @@ def _need_api_key():
 
 
 def _get_api_key_cfgs(api_key):
-    if _LLM == 'chatgpt':
-        return {'api_key': api_key}
-    elif _LLM == 'chatglm':
-        return {'api_key': api_key}
-    elif _LLM == 'deepseek':
+    if _LLM in ['chatgpt', 'chatglm', 'deepseek']:
         return {'api_key': api_key}
     else:
         return {}
+
 
 def show_tip(level_index):
     # 获取提示信息
@@ -162,7 +163,7 @@ if __name__ == '__main__':
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
                 gr_show_tip = gr.Button("提示")
-                gr_tip = gr.Text(value="点击“提示”即可获得提示。", label="提示信息")
+                gr_tip = gr.TextArea(placeholder=tip_ph, label=tip_label, interactive=True)
 
                 
 
@@ -182,13 +183,7 @@ if __name__ == '__main__':
                 gr_explanation = gr.TextArea(label=explanation_label, lines=1)
         gr.Markdown(tos_markdown)
 
-        gr_show_tip.click(show_tip, inputs=[gr_select], outputs=[gr_tip])
-
-        def show_tip(level_index):
-            tip = level_tips.get(level_index, "没有相关提示。")
-            return tip
-        gr_show_tip.click(show_tip, inputs=[gr_select], outputs=[gr_tip])
-
+        gr_show_tip.click(lambda x: show_tip(x), inputs=[gr_select], outputs=[gr_tip])
 
         def _postprocess_question_text(question_text):
             if _LANG == 'cn':
@@ -218,18 +213,18 @@ if __name__ == '__main__':
 
             executor = QuestionExecutor(_QUESTIONS[select_qid], _LANG)
             question_text = _postprocess_question_text(executor.question_text)
-            return question_text, '', '', {}, '', \
+            return question_text, '', '','', {}, '', \
                 gr.Button(submit_label, interactive=True), \
                 gr.Button(next_label, interactive=False), \
-                uuid_, \
-                "点击“提示”即可获得提示。"  # 更新提示信息
+                uuid_
+               
         
         gr_select.select(
             _radio_select,
             inputs=[gr_uuid, gr_select],
             outputs=[
-                gr_requirement, gr_question, gr_answer,
-                gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid, gr_tip
+                gr_requirement, gr_question,gr_tip, gr_answer,
+                gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid
             ],
         )
 
@@ -262,7 +257,7 @@ if __name__ == '__main__':
             else:
                 executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
                 question_text = _postprocess_question_text(executor.question_text)
-                return question_text, '', '', {}, '', \
+                return question_text, '', '', '',{}, '', \
                     gr.Button(submit_label, interactive=True), \
                     gr.Button(next_label, interactive=False), \
                     uuid_, \
@@ -271,15 +266,16 @@ if __name__ == '__main__':
                         value=_qid,
                         label=select_label,
                     )
+                
 
 
         gr_next.click(
             fn=_next_question,
             inputs=[gr_uuid],
             outputs=[
-                gr_requirement, gr_question, gr_answer,
+                gr_requirement, gr_question,gr_tip, gr_answer,
                 gr_predict, gr_explanation, gr_submit, gr_next,
-                gr_uuid, gr_select,
+                gr_uuid, gr_select
             ],
         )
 

@@ -26,7 +26,7 @@ def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str):
         answer_text = answer_text.split()
         user_text = user_text.split()
     
-    if "不" or "no" in user_text:
+    if "不" in user_text or " no " in user_text:
         return False, "问题中不能包含‘不’或‘no’" if lang == 'cn' else "The question can not contain 'no' ."
     
     if answer_text == 'no' or '不':
