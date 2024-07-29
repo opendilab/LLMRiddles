@@ -172,7 +172,6 @@ if __name__ == '__main__':
                 with gr.Row():
                     gr_tip = gr.TextArea(placeholder=tip_ph, label=tip_label, interactive=True)    
                     
-
                 with gr.Row():    
                     gr_show_tip = gr.Button("提示")
 
