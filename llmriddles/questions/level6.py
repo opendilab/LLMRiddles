@@ -29,11 +29,11 @@ def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str):
     if "不" in user_text or " no " in user_text:
         return False, "问题中不能包含‘不’或‘no’" if lang == 'cn' else "The question can not contain 'no' ."
     
-    if answer_text == 'no' or '不':
-        return True , None 
-    else:
-        return False, None
-    
+    if lang == 'cn':
+        return (True, None) if answer_text == "不" else (False, None)
+    elif lang == 'en':
+        return (True, None) if answer_text == "no" else (False, None)
+    return False, None    
 
 
 
