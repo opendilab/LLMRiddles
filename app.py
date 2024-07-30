@@ -43,7 +43,6 @@ level_tips = {
     # 根据需要继续添加
 }
 
-
 if _DEBUG:
     logging.getLogger().setLevel(logging.INFO)
 else:
@@ -152,6 +151,7 @@ def show_tip(level_index):
     tip = level_tips.get(level_index, "没有相关提示。")
     return tip
 
+
 if __name__ == '__main__':
     with gr.Blocks(title=title, theme='ParityError/Interstellar') as demo:
         gr.Markdown(title_markdown)
@@ -163,16 +163,14 @@ if __name__ == '__main__':
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
 
-                
-
                 with gr.Row():
                     gr_submit = gr.Button(submit_label, interactive=False)
                     gr_next = gr.Button(next_label)
 
                 with gr.Row():
-                    gr_tip = gr.TextArea(placeholder=tip_ph, label=tip_label, interactive=True)    
-                    
-                with gr.Row():    
+                    gr_tip = gr.TextArea(placeholder=tip_ph, label=tip_label, interactive=True)
+
+                with gr.Row():
                     gr_show_tip = gr.Button("提示")
 
                 with gr.Row():
@@ -202,7 +200,6 @@ if __name__ == '__main__':
                 question_text = f"<h2 style='color: #6d28d9;'>{question_text[:idx]}</h2><h4>{question_text[idx+1:]}</h4>"
             return question_text
 
-
         def _radio_select(uuid_, select_qid):
             global count
             if not uuid_:
@@ -222,17 +219,14 @@ if __name__ == '__main__':
                 gr.Button(submit_label, interactive=True), \
                 gr.Button(next_label, interactive=False), \
                 uuid_
-               
-        
+
         gr_select.select(
             _radio_select,
             inputs=[gr_uuid, gr_select],
             outputs=[
-                gr_requirement, gr_question,gr_tip, gr_answer,
-                gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid
+                gr_requirement, gr_question, gr_tip, gr_answer, gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid
             ],
         )
-
 
         def _next_question(uuid_):
             global count
@@ -271,19 +265,15 @@ if __name__ == '__main__':
                         value=_qid,
                         label=select_label,
                     )
-                
-
 
         gr_next.click(
             fn=_next_question,
             inputs=[gr_uuid],
             outputs=[
-                gr_requirement, gr_question,gr_tip, gr_answer,
-                gr_predict, gr_explanation, gr_submit, gr_next,
-                gr_uuid, gr_select
+                gr_requirement, gr_question, gr_tip, gr_answer, gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid,
+                gr_select
             ],
         )
-
 
         def _submit_answer(qs_text: str, api_key: str, uuid_: str):
             global _QUESTION_SESSIONS
@@ -292,8 +282,10 @@ if __name__ == '__main__':
 
             _exists, _qid = _QUESTION_SESSIONS[uuid_]
             executor = QuestionExecutor(
-                _QUESTIONS[_qid], _LANG,
-                llm=_LLM, llm_cfgs=_get_api_key_cfgs(api_key) if _need_api_key() else {'api_key': _LLM_KEY}
+                _QUESTIONS[_qid],
+                _LANG,
+                llm=_LLM,
+                llm_cfgs=_get_api_key_cfgs(api_key) if _need_api_key() else {'api_key': _LLM_KEY}
             )
             answer_text, correctness, explanation = executor.check(qs_text)
             labels = {correct_label: 1.0} if correctness else {wrong_label: 1.0}
@@ -303,13 +295,11 @@ if __name__ == '__main__':
             else:
                 return answer_text, labels, explanation, gr.Button(next_label, interactive=False), uuid_
 
-
         gr_submit.click(
             _submit_answer,
             inputs=[gr_question, gr_api_key, gr_uuid],
             outputs=[gr_answer, gr_predict, gr_explanation, gr_next, gr_uuid],
         )
-
 
     concurrency = int(os.environ.get('CONCURRENCY', os.cpu_count()))
     favicon_path = os.path.join(os.path.dirname(__file__), 'llmriddles', 'assets', 'avatar.png')

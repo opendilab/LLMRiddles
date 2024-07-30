@@ -142,6 +142,7 @@ local.properties
 
 # PyDev specific (Python IDE for Eclipse)
 *.pydevproject
+.style.yapf
 
 # CDT-specific (C/C++ Development Tooling)
 .cproject

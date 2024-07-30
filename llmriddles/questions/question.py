@@ -17,6 +17,7 @@ class Question:
 
 _KNOWN_PROBLEMS = []
 
+
 class Checker:
 
     def __init__(self, checkers, required_input_keys=None) -> None:
@@ -25,7 +26,7 @@ class Checker:
             self.checker = self._integrated_checker
         else:
             self.checker = checkers
-        
+
         if required_input_keys == None:
             required_input_keys = ['question_text', 'user_text', 'answer_text', 'lang']
         self.required_input_keys = required_input_keys
@@ -35,14 +36,18 @@ class Checker:
 
     def __call__(self, inputs):
         return self.checker(*[inputs[key] for key in self.required_input_keys])
-        
-def register_question(text: Union[Mapping[str, str], str],
-                      checkers: Union[Mapping[str, SingleLangCheckerTyping], MultiLangCheckerTyping],
-                      name=Union[Mapping[str, str], str],
-                      level: int = 1, default_lang='cn'):
-    
+
+
+def register_question(
+    text: Union[Mapping[str, str], str],
+    checkers: Union[Mapping[str, SingleLangCheckerTyping], MultiLangCheckerTyping],
+    name=Union[Mapping[str, str], str],
+    level: int = 1,
+    default_lang='cn'
+):
+
     checker = checkers if isinstance(checkers, Checker) else Checker(checkers)
-        
+
     if isinstance(text, str):
         texts = {default_lang: text}
     else:
@@ -57,7 +62,4 @@ def register_question(text: Union[Mapping[str, str], str],
 
 
 def list_ordered_questions() -> List[Question]:
-    return [
-        problem for _, problem in
-        sorted(enumerate(_KNOWN_PROBLEMS), key=lambda x: (x[1].level, x[0]))
-    ]
+    return [problem for _, problem in sorted(enumerate(_KNOWN_PROBLEMS), key=lambda x: (x[1].level, x[0]))]

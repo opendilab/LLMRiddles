@@ -1,5 +1,3 @@
-
-
 def word_reverse_text(input_text, lang='cn'):
     if lang == 'cn':
         user_text = input_text[::-1]
@@ -8,6 +6,7 @@ def word_reverse_text(input_text, lang='cn'):
         words.reverse()
         user_text = ' '.join(words)
     return user_text
+
 
 def count_words(text: str, contain_punctuation: bool = False):
     chinese_words = []

@@ -3,7 +3,6 @@ from .question import Checker
 from typing import Callable
 from .utility import count_words, word_reverse_text
 
-
 CN_TEXT_1 = """
 第三章第一题（自说自话），请你输入一个至少10个字的提问，使模型的回答和提问完全一样。
 
@@ -37,7 +36,10 @@ register_question(
         'en': EN_TEXT_1,
     },
     checkers=_checker_1,
-    name={'cn': '3-1 自说自话', 'en': '3-1'},
+    name={
+        'cn': '3-1 自说自话',
+        'en': '3-1'
+    },
     level=3,
 )
 
@@ -76,7 +78,10 @@ register_question(
         'en': EN_TEXT_2,
     },
     checkers=_checker_2,
-    name={'cn': '3-2 话自说自', 'en': '3-2'},
+    name={
+        'cn': '3-2 话自说自',
+        'en': '3-2'
+    },
     level=3,
 )
 
@@ -113,7 +118,10 @@ register_question(
         'en': EN_TEXT_3,
     },
     checkers=_checker_3,
-    name={'cn': '3-3 就是敢说', 'en': '3-3'},
+    name={
+        'cn': '3-3 就是敢说',
+        'en': '3-3'
+    },
     level=3,
 )
 
@@ -129,6 +137,7 @@ For the fourth question in chapter 3, please enter a question that is not a pali
 Please enter your query below and click the submit button
 """
 
+
 def _checker_4(question_text: str, user_text: str, answer_text: str, lang: str, llm_callback: Callable[[str], str]):
     answer_text = answer_text.strip()
     user_text = user_text.strip()
@@ -143,17 +152,21 @@ def _checker_4(question_text: str, user_text: str, answer_text: str, lang: str, 
 
     if second_answer_text == word_reverse_text(second_answer_text):
         return False, "正着问和倒着问时，模型的回答不能是回文串" if lang == 'cn' else 'The model\'s answer should not be a palindrome when asked forward or backward.'
-    
+
     return True, None
+
 
 register_question(
     {
         'cn': CN_TEXT_4,
         'en': EN_TEXT_4,
-    }, 
-    checkers=Checker(_checker_4, required_input_keys=['question_text', 'user_text', 'answer_text', 'lang', 'llm_callback']), 
-    name={'cn': '3-4 回文协变', 'en': '3-4'},
+    },
+    checkers=Checker(
+        _checker_4, required_input_keys=['question_text', 'user_text', 'answer_text', 'lang', 'llm_callback']
+    ),
+    name={
+        'cn': '3-4 回文协变',
+        'en': '3-4'
+    },
     level=3,
 )
-
-
