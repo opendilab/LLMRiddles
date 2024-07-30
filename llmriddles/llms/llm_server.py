@@ -16,7 +16,10 @@ class LLMInstance:
     def query(self, message):
         try:
             messages = [
-                {"role": "user", "content": message},
+                {
+                    "role": "user",
+                    "content": message
+                },
             ]
             encodeds = self.tokenizer.apply_chat_template(messages, return_tensors="pt")
             model_inputs = encodeds.to(self.device)
@@ -26,19 +29,9 @@ class LLMInstance:
 
             # output is the string decoded[0] after "[/INST]". There may exist "</s>", delete it.
             output = decoded[0].split("[/INST]")[1].split("</s>")[0]
-            return {
-                'code': 0,
-                'ret': True,
-                'error_msg': None,
-                'output': output
-            }
+            return {'code': 0, 'ret': True, 'error_msg': None, 'output': output}
         except Exception as e:
-            return {
-                'code': 1,
-                'ret': False,
-                'error_msg': str(e),
-                'output': None
-            }
+            return {'code': 1, 'ret': False, 'error_msg': str(e), 'output': None}
 
 
 def create_app(core):
@@ -54,7 +47,9 @@ def create_app(core):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--model_path', required=True, default='Mistral-7B-Instruct-v0.1', help='the model path of reward model')
+    parser.add_argument(
+        '-m', '--model_path', required=True, default='Mistral-7B-Instruct-v0.1', help='the model path of reward model'
+    )
     parser.add_argument('--ip', default='0.0.0.0')
     parser.add_argument('-p', '--port', default=8001)
     parser.add_argument('--debug', action='store_true')

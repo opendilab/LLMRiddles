@@ -60,6 +60,14 @@ QUESTION_LANG=cn QUESTION_LLM='chatglm' QUESTION_LLM_KEY=<your API key> python3 
 ```shell
 QUESTION_LANG=en QUESTION_LLM='chatglm' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
+### DeepSeek + Chinese
+```shell
+Question_Lang=cn QUESTION_LLM='deepseek' QUESTION_LLM_KEY=<your API key> python3 -u app.py
+```
+### DeepSeek + English
+```shell
+Question_Lang=en QUESTION_LLM='deepseek' QUESTION_LLM_KEY=<your API key> python3 -u app.py
+```
 ### Mistral-7B-Instruct-v0.1 + English
 ```shell
 QUESTION_LANG=en QUESTION_LLM='mistral-7b' python3 -u app.py

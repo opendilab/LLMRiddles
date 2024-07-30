@@ -5,6 +5,7 @@ from ..llms import get_llm_fn
 
 
 class QuestionExecutor:
+
     def __init__(self, question: Question, lang: str = 'cn', llm: str = 'chatgpt', llm_cfgs=None):
         self.question = question
         self.lang = lang
@@ -18,7 +19,7 @@ class QuestionExecutor:
     @property
     def question_name(self):
         return self.question.names[self.lang]
-    
+
     def llm_answer(self, qs_text: str) -> str:
         return get_llm_fn(self.llm)(qs_text, **self.llm_cfgs)
 
@@ -34,7 +35,7 @@ class QuestionExecutor:
             'answer_text': answer_text,
             'lang': self.lang,
             'llm_callback': self.llm_answer,
-            # this list can be extended if needed in the future 
+            # this list can be extended if needed in the future
         }
         correct, explanation = self.question.checker(inputs)
         if explanation is None:

@@ -13,9 +13,35 @@ _QUESTIONS = list_ordered_questions()
 _LANG = os.environ.get('QUESTION_LANG', 'cn')
 assert _LANG in ['cn', 'en'], _LANG
 _LLM = os.environ.get('QUESTION_LLM', 'chatgpt')
-assert _LLM in ['chatgpt', 'chatglm', 'mistral-7b'], _LLM
+assert _LLM in ['chatgpt', 'chatglm', 'deepseek', 'mistral-7b'], _LLM
 _LLM_KEY = os.environ.get('QUESTION_LLM_KEY', None)
 _DEBUG = os.environ.get('DEBUG', 'false').lower() == 'true'
+
+level_tips = {
+    0: "直接告诉模型不要加其他的话",
+    1: "试试说，多说点。",
+    2: "试试选择一个复杂或深度话题",
+    3: "试试进行问候吧",
+    4: "使 prompt 几乎是回文串，并要求 LLM 输出指定内容",
+    5: "换个形容描述狗吧",
+    6: "直接要求 LLM 输出指定数量的某个字",
+    7: "试试与「进制」相关的 prompt 吧",
+    8: "试试让其生成列表式的回答吧",
+    9: "联想一下什么和114514有关吧",
+    10: "尽情试验一些数字吧",
+    11: "试试说「犬」的同义字",
+    12: "试试直接点的要求吧",
+    13: "试试输入一个回文串，并要求 LLM 将输入原样输出",
+    14: "尝试提问关于数学规则的创意性改变",
+    15: "试试要求 LLM 在观察到正序时说「你好」，逆序时说「好你」",
+    16: "要求 LLM 复读 prompt，但在 prompt 里面留一个标志；每次回答时，对标志进行翻转",
+    17: "输入问候语",
+    18: "多尝试些数字吧",
+    19: "试试让 LLM 背诵圆周率",
+    20: "试试让 LLM 造句吧",
+    21: "发挥想象吧"
+    # 根据需要继续添加
+}
 
 if _DEBUG:
     logging.getLogger().setLevel(logging.INFO)
@@ -32,6 +58,8 @@ if _LANG == "cn":
     question_label = "玩家提问栏"
     answer_ph = "大语言模型的回答"
     answer_label = "大语言模型回答栏"
+    tip_ph = "点击获得提示"
+    tip_label = "提示信息"
     submit_label = "提交"
     next_label = "下一题"
     api_ph = "你个人的大语言模型 API Key (例如：ChatGPT)"
@@ -73,6 +101,8 @@ elif _LANG == "en":
     question_label = "Question"
     answer_ph = "Answer From LLM"
     answer_label = "Answer"
+    tip_ph = "Click to get tips"
+    tip_label = "Tips"
     submit_label = "Submit"
     next_label = "Next"
     api_ph = "Your API Key (e.g. ChatGPT)"
@@ -106,16 +136,20 @@ else:
 
 
 def _need_api_key():
-    return (_LLM == 'chatgpt' or _LLM == 'chatglm') and _LLM_KEY is None
+    return (_LLM in ['chatgpt', 'chatglm', 'deepseek']) and _LLM_KEY is None
 
 
 def _get_api_key_cfgs(api_key):
-    if _LLM == 'chatgpt':
-        return {'api_key': api_key}
-    elif _LLM == 'chatglm':
+    if _LLM in ['chatgpt', 'chatglm', 'deepseek']:
         return {'api_key': api_key}
     else:
         return {}
+
+
+def show_tip(level_index):
+    # 获取提示信息
+    tip = level_tips.get(level_index, "没有相关提示。")
+    return tip
 
 
 if __name__ == '__main__':
@@ -128,9 +162,17 @@ if __name__ == '__main__':
             with gr.Column():
                 gr_question = gr.TextArea(placeholder=question_ph, label=question_label)
                 gr_api_key = gr.Text(placeholder=api_ph, label=api_label, type='password', visible=_need_api_key())
+
                 with gr.Row():
                     gr_submit = gr.Button(submit_label, interactive=False)
                     gr_next = gr.Button(next_label)
+
+                with gr.Row():
+                    gr_tip = gr.TextArea(placeholder=tip_ph, label=tip_label, interactive=True)
+
+                with gr.Row():
+                    gr_show_tip = gr.Button("提示")
+
                 with gr.Row():
                     gr_select = gr.Radio(
                         choices=[(QuestionExecutor(q, _LANG).question_name, i) for i, q in enumerate(_QUESTIONS)],
@@ -144,6 +186,8 @@ if __name__ == '__main__':
                 gr_explanation = gr.TextArea(label=explanation_label, lines=1)
         gr.Markdown(tos_markdown)
 
+        gr_show_tip.click(lambda x: show_tip(x), inputs=[gr_select], outputs=[gr_tip])
+
         def _postprocess_question_text(question_text):
             if _LANG == 'cn':
                 idx = question_text.find('，')
@@ -155,7 +199,6 @@ if __name__ == '__main__':
                 idx = question_text.find(',')
                 question_text = f"<h2 style='color: #6d28d9;'>{question_text[:idx]}</h2><h4>{question_text[idx+1:]}</h4>"
             return question_text
-
 
         def _radio_select(uuid_, select_qid):
             global count
@@ -172,7 +215,7 @@ if __name__ == '__main__':
 
             executor = QuestionExecutor(_QUESTIONS[select_qid], _LANG)
             question_text = _postprocess_question_text(executor.question_text)
-            return question_text, '', '', {}, '', \
+            return question_text, '', '','', {}, '', \
                 gr.Button(submit_label, interactive=True), \
                 gr.Button(next_label, interactive=False), \
                 uuid_
@@ -181,11 +224,9 @@ if __name__ == '__main__':
             _radio_select,
             inputs=[gr_uuid, gr_select],
             outputs=[
-                gr_requirement, gr_question, gr_answer,
-                gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid,
+                gr_requirement, gr_question, gr_tip, gr_answer, gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid
             ],
         )
-
 
         def _next_question(uuid_):
             global count
@@ -215,7 +256,7 @@ if __name__ == '__main__':
             else:
                 executor = QuestionExecutor(_QUESTIONS[_qid], _LANG)
                 question_text = _postprocess_question_text(executor.question_text)
-                return question_text, '', '', {}, '', \
+                return question_text, '', '', '',{}, '', \
                     gr.Button(submit_label, interactive=True), \
                     gr.Button(next_label, interactive=False), \
                     uuid_, \
@@ -225,17 +266,14 @@ if __name__ == '__main__':
                         label=select_label,
                     )
 
-
         gr_next.click(
             fn=_next_question,
             inputs=[gr_uuid],
             outputs=[
-                gr_requirement, gr_question, gr_answer,
-                gr_predict, gr_explanation, gr_submit, gr_next,
-                gr_uuid, gr_select,
+                gr_requirement, gr_question, gr_tip, gr_answer, gr_predict, gr_explanation, gr_submit, gr_next, gr_uuid,
+                gr_select
             ],
         )
-
 
         def _submit_answer(qs_text: str, api_key: str, uuid_: str):
             global _QUESTION_SESSIONS
@@ -244,8 +282,10 @@ if __name__ == '__main__':
 
             _exists, _qid = _QUESTION_SESSIONS[uuid_]
             executor = QuestionExecutor(
-                _QUESTIONS[_qid], _LANG,
-                llm=_LLM, llm_cfgs=_get_api_key_cfgs(api_key) if _need_api_key() else {'api_key': _LLM_KEY}
+                _QUESTIONS[_qid],
+                _LANG,
+                llm=_LLM,
+                llm_cfgs=_get_api_key_cfgs(api_key) if _need_api_key() else {'api_key': _LLM_KEY}
             )
             answer_text, correctness, explanation = executor.check(qs_text)
             labels = {correct_label: 1.0} if correctness else {wrong_label: 1.0}
@@ -254,7 +294,6 @@ if __name__ == '__main__':
                 return answer_text, labels, explanation, gr.Button(next_label, interactive=True), uuid_
             else:
                 return answer_text, labels, explanation, gr.Button(next_label, interactive=False), uuid_
-
 
         gr_submit.click(
             _submit_answer,

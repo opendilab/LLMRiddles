@@ -64,7 +64,10 @@ register_question(
         'cn': _cn_checker_1,
         'en': _en_checker_1,
     },
-    name={'cn': '2-1 质数长度', 'en': '2-1'},
+    name={
+        'cn': '2-1 质数长度',
+        'en': '2-1'
+    },
     level=2
 )
 
@@ -115,7 +118,10 @@ register_question(
         'cn': _cn_checker_2,
         'en': _en_checker_2,
     },
-    name={'cn': '2-2 越说越大', 'en': '2-2'},
+    name={
+        'cn': '2-2 越说越大',
+        'en': '2-2'
+    },
     level=2
 )
 
@@ -177,7 +183,10 @@ register_question(
         'cn': _cn_checker_3,
         'en': _en_checker_3,
     },
-    name={'cn': '2-3 越说越小', 'en': '2-3'},
+    name={
+        'cn': '2-3 越说越小',
+        'en': '2-3'
+    },
     level=2,
 )
 
@@ -212,7 +221,10 @@ register_question(
         'cn': _cn_checker_4,
         'en': _en_checker_4,
     },
-    name={'cn': '2-4 警世名言', 'en': '2-4'},
+    name={
+        'cn': '2-4 警世名言',
+        'en': '2-4'
+    },
     level=2,
 )
 
@@ -269,7 +281,10 @@ register_question(
         'cn': _cn_checker_5,
         'en': _en_checker_5,
     },
-    name={'cn': '2-5 开平方数', 'en': '2-5'},
+    name={
+        'cn': '2-5 开平方数',
+        'en': '2-5'
+    },
     level=2,
 )
 
@@ -319,6 +334,9 @@ register_question(
         'cn': _cn_checker_6,
         'en': _en_checker_6,
     },
-    name={'cn': '2-6 得寸进狗', 'en': '2-6'},
+    name={
+        'cn': '2-6 得寸进狗',
+        'en': '2-6'
+    },
     level=2
 )

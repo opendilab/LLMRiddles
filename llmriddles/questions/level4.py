@@ -19,6 +19,7 @@ For the first question in chapter 4, please make a question A whose answer is B 
 Please enter your query below and click the submit button
 """
 
+
 def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str, llm_callback: Callable[[str], str]):
     answer_text = answer_text.strip()
     user_text = user_text.strip()
@@ -26,16 +27,22 @@ def _checker_1(question_text: str, user_text: str, answer_text: str, lang: str, 
 
     if second_answer_text != user_text:
         return False, f"B产生的回答和原问题A不一致:\n A: {user_text}\n B: {answer_text}\n Answer from B: {second_answer_text}" if lang == 'cn' else f'The answer from B is not the same as the original question A:\n A: {user_text}\n B: {answer_text}\n Answer from B: {second_answer_text}'
-    
+
     return True, None
-    
+
+
 register_question(
     {
         'cn': CN_TEXT_1,
         'en': EN_TEXT_1,
     },
-    checkers=Checker(_checker_1, required_input_keys=['question_text', 'user_text', 'answer_text', 'lang', 'llm_callback']), 
-    name={'cn': '4-1 循环往复', 'en': '4-1'},
+    checkers=Checker(
+        _checker_1, required_input_keys=['question_text', 'user_text', 'answer_text', 'lang', 'llm_callback']
+    ),
+    name={
+        'cn': '4-1 循环往复',
+        'en': '4-1'
+    },
     level=4,
 )
 
@@ -63,16 +70,19 @@ def _checker_2(question_text: str, user_text: str, answer_text: str, lang: str):
     else:
         return True, None
 
+
 register_question(
     {
         'cn': CN_TEXT_2,
         'en': EN_TEXT_2,
     },
     checkers=_checker_2,
-    name={'cn': '4-2 惜字如金', 'en': '4-2'},
+    name={
+        'cn': '4-2 惜字如金',
+        'en': '4-2'
+    },
     level=4,
 )
-
 
 CN_TEXT_3 = """
 第四章第三题（自然之密），请输入一个大于一的正整数作为问题，使回答里包含和它刚好相差1的数。
@@ -95,8 +105,8 @@ def _checker_3(question_text: str, user_text: str, answer_text: str, lang: str):
         return False, "问题应该是一个正整数" if lang == 'cn' else 'Question should be a positive integer.'
     elif int(user_text) == 1:
         return False, "问题应该是一个大于1的正整数" if lang == 'cn' else 'Question should be a positive integer greater than 1.'
-    elif int(user_text) - 1 not in get_all_numbers(answer_text) and int(
-            user_text) + 1 not in get_all_numbers(answer_text):
+    elif int(user_text) - 1 not in get_all_numbers(answer_text) and int(user_text) + 1 not in get_all_numbers(
+            answer_text):
         return False, "回答中应该包含一个与问题相差1的数字" if lang == 'cn' else 'Answer should contain a number that is exactly 1 different from the question.'
     else:
         return True, None
@@ -108,6 +118,9 @@ register_question(
         'en': EN_TEXT_3,
     },
     checkers=_checker_3,
-    name={'cn': '4-3 自然之密', 'en': '4-3'},
+    name={
+        'cn': '4-3 自然之密',
+        'en': '4-3'
+    },
     level=4,
 )

@@ -5,6 +5,7 @@ import argparse
 
 
 class LLMFlaskClient:
+
     def __init__(self, ip: str, port: int, max_retry: int = 3):
         self.ip = ip
         self.port = port
