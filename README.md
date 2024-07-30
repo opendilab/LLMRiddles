@@ -60,11 +60,11 @@ QUESTION_LANG=cn QUESTION_LLM='chatglm' QUESTION_LLM_KEY=<your API key> python3 
 ```shell
 QUESTION_LANG=en QUESTION_LLM='chatglm' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
-### DeepSeek + 中文
+### DeepSeek + Chinese
 ```shell
 Question_Lang=cn QUESTION_LLM='deepseek' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
-### DeepSeek + 英文
+### DeepSeek + English
 ```shell
 Question_Lang=en QUESTION_LLM='deepseek' QUESTION_LLM_KEY=<your API key> python3 -u app.py
 ```
